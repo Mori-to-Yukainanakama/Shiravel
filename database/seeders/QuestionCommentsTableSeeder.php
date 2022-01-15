@@ -14,7 +14,7 @@ class QuestionCommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //質問コメントのテストデータ
         DB::table('question_comments')->insert([
             'question_comment_id' => 1,
             'user_id' => 1,

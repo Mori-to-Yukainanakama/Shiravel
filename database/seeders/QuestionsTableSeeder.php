@@ -14,7 +14,7 @@ class QuestionsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //質問テーブルのテストデータ
         DB::table('questions')->insert([
             'question_id' => 1,
             'user_id' => 1,

@@ -14,7 +14,7 @@ class AnswersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //回答テーブルのテストデータ
         DB::table('answers')->insert([
             'answer_id' => 1,
             'user_id' => 1,

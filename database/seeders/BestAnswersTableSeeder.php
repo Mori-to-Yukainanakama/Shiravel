@@ -14,7 +14,7 @@ class BestAnswersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //ベストアンサーのテストデータ
         DB::table('best_answers')->insert([
             'best_answer_id' => 1,
             'answer_id' => 1,
