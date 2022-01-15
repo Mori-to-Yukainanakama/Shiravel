@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class questions extends Seeder
+class AnswerCommentsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,11 @@ class questions extends Seeder
     public function run()
     {
         //
-        DB::table('questions')->insert([
-            'question_id' => 1,
+        DB::table('answer_comments')->insert([
+            'answer_comment_id' => 1,
             'user_id' => 1,
-            'title' => 'テストタイトル',
-            'content' => '質問内容',
+            'answer_id' => 1,
+            'content' => '回答コメント',
             'created_at' => now(),
         ]);
     }
