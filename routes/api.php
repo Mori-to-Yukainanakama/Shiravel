@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'answer'], function () {
+    // 回答api
+    Route::group(['prefix' => 'answer'], function () {
+        Route::get('/', [AnswerController::class, 'answerPost']);
+    });
+});
