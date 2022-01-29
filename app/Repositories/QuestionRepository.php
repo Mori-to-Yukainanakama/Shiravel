@@ -20,6 +20,7 @@ class QuestionRepository implements RepositoryInterface
         return Question::find($id);
     }
 
+    // 質問登録
     public function save($data)
     {
         $question = new Question;
