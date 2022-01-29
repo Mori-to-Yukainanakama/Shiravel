@@ -19,4 +19,10 @@ class QuestionRepository implements RepositoryInterface
     {
         return Question::find($id);
     }
+
+    public function save($data)
+    {
+        $question = new Question;
+        $question->fill($data)->save();
+    }
 }
