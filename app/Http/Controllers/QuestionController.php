@@ -17,9 +17,8 @@ class QuestionController extends Controller
     }
 
     // 質問1件取得
-    public function getQuestion(Request $request)
+    public function getQuestion($id)
     {
-        $id = $request->id;
         $question = $this->question_service->getDataById($id);
         return $question;
     }
@@ -40,5 +39,17 @@ class QuestionController extends Controller
             'content' => 'コンテンツつううううう',
         ];
         $this->question_service->create($data);
+    }
+
+    /**
+     * 質問削除
+     * @param [int] $id
+     * @return void
+     */
+    public function delete($id)
+    {
+        // $this->question_service->delete($id);
+        // TODO API疎通確認用のため削除
+        return $this->question_service->delete($id);
     }
 }
