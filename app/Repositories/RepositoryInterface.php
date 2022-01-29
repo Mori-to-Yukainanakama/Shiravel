@@ -13,7 +13,4 @@ interface RepositoryInterface
 
     //登録
     public function save($data);
-
-    // 削除
-    public function delete($id);
 }

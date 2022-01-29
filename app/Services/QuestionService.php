@@ -33,16 +33,4 @@ class QuestionService implements ServiceInterface
     {
         return $this->question_repository->save($data);
     }
-
-    /**
-     * 質問削除
-     * @param [int] $id
-     * @return void
-     */
-    public function delete($id)
-    {
-        // $this->question_repository->delete($id);
-        // TODO API疎通確認用のため削除
-        return $this->question_repository->delete($id);
-    }
 }
