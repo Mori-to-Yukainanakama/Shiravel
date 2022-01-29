@@ -19,9 +19,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'v1'], function () {
-    // 質問
-    Route::group(['prefix' => 'questions'], function () {
-        Route::get('/', [QuestionController::class, 'index']);
+// /questions パスを共通化
+Route::group(['prefix' => 'questions'], function () {
+    Route::group(['prefix' => 'v1'], function () {
+
+        // 質問全件取得api
+        Route::get('/', [QuestionController::class, 'getQuestions']);
     });
 });
+
+Route::get('/question', [QuestionController::class, 'getQuestion']);
+
+Route::get('/create', [QuestionController::class, 'create']);
