@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\QuestionController;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // /questions パスを共通化
-Route::group(['prefix' => 'questions'], function () {
-    Route::group(['prefix' => 'v1'], function () {
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'questions'], function () {
 
         // 質問全件取得api
-        Route::get('/', [QuestionController::class, 'getQuestions']);
+        Route::get('/', [Controllers\QuestionController::class, 'getQuestions']);
+        Route::get('/{id}', [Controllers\QuestionController::class, 'getQuestion']);
+        Route::delete('/{id}', [Controllers\QuestionController::class, 'delete']);
     });
 });
 
-Route::get('/question', [QuestionController::class, 'getQuestion']);
+Route::get('/question', [Controllers\QuestionController::class, 'getQuestion']);
