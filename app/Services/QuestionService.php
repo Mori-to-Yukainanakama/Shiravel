@@ -23,7 +23,6 @@ class QuestionService implements ServiceInterface
         return $this->question_repository->getAll();
     }
 
-
     // プライマリーキー（id）で1件取得
     public function getDataById($id)
     {
