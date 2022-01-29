@@ -2,16 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use App\Services\ServiceInterface;
 
-class AnswerController extends BaseController
+use Illuminate\Http\Request;
+
+class AnswerController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    private ServiceInterface $answer_service;
 
-    public function answerPost(){
-        echo ("hello!");
+    public function __construct(ServiceInterface $answer_service)
+    {
+        $this->answer_service = $answer_service;
     }
+
+    // 回答登録
+    public function createAnswer($data)
+    {
+        $this->question_service->create($data);
+    }
+
+    // 回答更新
+    public function updateAnswer(Request $request)
+    {
+        $id = $request->id;
+        $answer = $this->answer_service->getDataById($id);
+
+        return $answer;
+    }
+
+    // 回答削除
+    public function deleteAnswer(Request $request)
+    {
+        $id = $request->id;
+        $answer = $this->answer_service->getDataById($id);
+        return $answer;
+    }
+
 }
