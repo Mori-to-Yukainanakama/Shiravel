@@ -6,5 +6,9 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    //
+    public function index()
+    {
+        $test = '';
+        return $test;
+    }
 }
