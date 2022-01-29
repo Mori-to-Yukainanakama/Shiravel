@@ -27,3 +27,5 @@ Route::group(['prefix' => 'questions'], function () {
 });
 
 Route::get('/question', [QuestionController::class, 'getQuestion']);
+
+Route::get('/create', [QuestionController::class, 'create']);

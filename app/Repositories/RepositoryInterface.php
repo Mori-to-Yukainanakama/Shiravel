@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Repositories;
 
-// Serviceのインターフェース　使い回しする
-interface ShiravelServiceInterface
+// Repositoryのインターフェース 使い回し
+interface RepositoryInterface
 {
     // 全件取得
     public function getAll();

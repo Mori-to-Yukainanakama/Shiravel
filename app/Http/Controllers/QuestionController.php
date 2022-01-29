@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ShiravelServiceInterface;
+use App\Services\ServiceInterface;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
 
-    private ShiravelServiceInterface $question_service;
+    private ServiceInterface $question_service;
 
-    public function __construct(ShiravelServiceInterface $question_service)
+    public function __construct(ServiceInterface $question_service)
     {
         $this->question_service = $question_service;
     }

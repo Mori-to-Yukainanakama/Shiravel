@@ -15,15 +15,15 @@ class AppServiceProvider extends ServiceProvider
     {
         // bindメソッドはインスタンスを生成してくれる
         $this->app->bind(
-            \App\Repositories\ShiravelRepositoryInterface::class,
+            \App\Repositories\RepositoryInterface::class,
             \App\Repositories\QuestionRepository::class,
         );
 
         $this->app->bind(
-            \App\Services\ShiravelServiceInterface::class,
+            \App\Services\ServiceInterface::class,
             function ($app) {
                 return new \App\Services\QuestionService(
-                    $app->make(\App\Repositories\ShiravelRepositoryInterface::class)
+                    $app->make(\App\Repositories\RepositoryInterface::class)
                 );
             },
         );

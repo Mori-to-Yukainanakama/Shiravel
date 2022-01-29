@@ -11,4 +11,12 @@ class Question extends Model
 
     // プライマリーキーの指定
     protected $primaryKey = 'question_id';
+
+    protected $fillable = [
+        'user_id',
+        'title',
+        'content',
+        'is_answered',
+        'is_solved',
+    ];
 }

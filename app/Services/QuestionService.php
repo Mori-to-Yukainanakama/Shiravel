@@ -2,16 +2,17 @@
 
 namespace App\Services;
 
-use App\Repositories\ShiravelRepositoryInterface;
+use App\Repositories\RepositoryInterface;
 
-class QuestionService implements ShiravelServiceInterface
+// Serviceのインターフェースを継承してる
+class QuestionService implements ServiceInterface
 {
 
     private $question_repository;
 
     // インスタンス生成
     public function __construct(
-        ShiravelRepositoryInterface $question_repository
+        RepositoryInterface $question_repository
     ) {
         $this->question_repository = $question_repository;
     }

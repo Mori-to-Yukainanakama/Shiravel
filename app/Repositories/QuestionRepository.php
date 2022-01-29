@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Question;
 
 // Repositoryのインターフェースを継承
-class QuestionRepository implements ShiravelRepositoryInterface
+class QuestionRepository implements RepositoryInterface
 {
 
     // 全件取得
