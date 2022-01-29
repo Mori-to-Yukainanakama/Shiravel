@@ -26,16 +26,4 @@ class QuestionRepository implements RepositoryInterface
         $question = new Question;
         $question->fill($data)->save();
     }
-
-    /**
-     * 質問削除
-     * @param [int] $id
-     * @return void
-     */
-    public function delete($id)
-    {
-        // Question::find($id)->delete();
-        // TODO レスポンス確認用のため削除
-        return '削除完了';
-    }
 }

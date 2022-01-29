@@ -13,7 +13,4 @@ interface ServiceInterface
 
     // 登録
     public function create($data);
-
-    // 削除
-    public function delete($id);
 }
