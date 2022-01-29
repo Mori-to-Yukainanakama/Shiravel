@@ -10,4 +10,7 @@ interface RepositoryInterface
 
     // テーブルのプライマリーキーで1件取得
     public function getDataById($id);
+
+    //登録
+    public function save($data);
 }

@@ -29,4 +29,9 @@ class QuestionService implements ServiceInterface
     {
         return $this->question_repository->getDataById($id);
     }
+
+    public function create($data)
+    {
+        return $this->question_repository->save($data);
+    }
 }
