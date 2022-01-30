@@ -2,7 +2,10 @@
 
 namespace App\Services;
 
-// Serviceのインターフェース 使い回しする
+/**
+ * Serviceのインターフェース
+ * 共通で使用されるメソッドのみ用意する
+ */
 interface ServiceInterface
 {
     // 全件取得

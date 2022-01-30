@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ServiceInterface;
+use App\Services\QuestionService;
 
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
 
-    private ServiceInterface $question_service;
+    // QuestionServiceのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
+    private $question_service;
 
-    public function __construct(ServiceInterface $question_service)
+    public function __construct(QuestionService $question_service)
     {
         $this->question_service = $question_service;
     }
