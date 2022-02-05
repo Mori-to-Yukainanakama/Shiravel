@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 
 // Serviceのインターフェースを継承してる
-class UserService implements ServiceInterface
+class UserService
 {
 
     // UserRepositoryのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる

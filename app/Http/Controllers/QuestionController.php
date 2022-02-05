@@ -10,7 +10,7 @@ class QuestionController extends Controller
 {
 
     // QuestionServiceのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
-    private $question_service;
+    private QuestionService $question_service;
 
     public function __construct(QuestionService $question_service)
     {
