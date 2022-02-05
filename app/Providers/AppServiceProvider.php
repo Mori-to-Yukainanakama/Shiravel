@@ -15,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // bindメソッドはインスタンスを生成してくれる
         $this->app->bind(
+            \App\Repositories\RepositoryInterface::class,
+        );
+
+        $this->app->bind(
             \App\Repositories\QuestionRepository::class,
         );
         $this->app->bind(
