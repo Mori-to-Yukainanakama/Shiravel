@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class AnswerController extends Controller
 {
-    private ServiceInterface $answer_service;
+    private AnswerService $answer_service;
 
-    public function __construct(ServiceInterface $answer_service)
+    public function __construct(AnswerService $answer_service)
     {
         $this->answer_service = $answer_service;
     }
@@ -29,13 +29,17 @@ class AnswerController extends Controller
 
         return $answer;
     }
-
-    // 回答削除
-    public function deleteAnswer(Request $request)
+    
+    /**
+     * 回答削除
+     * @param [int] $id
+     * @return void
+     */
+    public function deleteAnswer($id)
     {
-        $id = $request->id;
-        $answer = $this->answer_service->getDataById($id);
-        return $answer;
+        // $this->answer_service->delete($id);
+        // TODO API疎通確認用のため削除
+        return $this->answer_service->delede($id);
     }
 
 }
