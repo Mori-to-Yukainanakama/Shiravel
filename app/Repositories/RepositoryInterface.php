@@ -2,7 +2,10 @@
 
 namespace App\Repositories;
 
-// Repositoryのインターフェース 使い回し
+/**
+ * Repositoryのインターフェース
+ * 共通で使用されるメソッドのみ用意する
+ */
 interface RepositoryInterface
 {
     // 全件取得
