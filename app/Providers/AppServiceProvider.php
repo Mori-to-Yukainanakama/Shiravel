@@ -31,6 +31,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             \App\Services\UserService::class,
         );
+
+        $this->app->bind(
+            \App\Repositories\RepositoryInterface::class,
+            \App\Repositories\AnswerCommentRepository::class,
+        );
+        $this->app->bind(
+            \App\Services\AnswerCommentService::class,
+        );
     }
 
     /**
