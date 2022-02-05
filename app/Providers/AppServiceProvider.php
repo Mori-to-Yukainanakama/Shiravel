@@ -14,14 +14,22 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         // bindメソッドはインスタンスを生成してくれる
-        //Question系
         $this->app->bind(
             \App\Repositories\RepositoryInterface::class,
+        );
+
+        $this->app->bind(
             \App\Repositories\QuestionRepository::class,
         );
         $this->app->bind(
-            \App\Services\ServiceInterface::class,
             \App\Services\QuestionService::class,
+        );
+
+        $this->app->bind(
+            \App\Repositories\UserRepository::class,
+        );
+        $this->app->bind(
+            \App\Services\UserService::class,
         );
     }
 

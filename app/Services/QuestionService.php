@@ -2,18 +2,17 @@
 
 namespace App\Services;
 
+use App\Repositories\QuestionRepository;
 use App\Repositories\RepositoryInterface;
 
-// Serviceのインターフェースを継承してる
-class QuestionService implements ServiceInterface
+class QuestionService
 {
 
-    private $question_repository;
+    // QuestionRepositoryのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
+    private RepositoryInterface $question_repository;
 
-    // インスタンス生成
-    public function __construct(
-        RepositoryInterface $question_repository
-    ) {
+    public function __construct(RepositoryInterface $question_repository)
+    {
         $this->question_repository = $question_repository;
     }
 
