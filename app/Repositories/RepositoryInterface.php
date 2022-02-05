@@ -2,7 +2,10 @@
 
 namespace App\Repositories;
 
-// Repositoryのインターフェース 使い回し
+/**
+ * Repositoryのインターフェース
+ * 共通で使用されるメソッドのみ用意する
+ */
 interface RepositoryInterface
 {
     // 全件取得
@@ -13,4 +16,7 @@ interface RepositoryInterface
 
     //登録
     public function save($data);
+
+    // 削除
+    public function delete($id);
 }

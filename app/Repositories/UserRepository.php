@@ -2,29 +2,29 @@
 
 namespace App\Repositories;
 
-use App\Models\Question;
+use App\Models\User;
 
 // Repositoryのインターフェースを継承
-class QuestionRepository implements RepositoryInterface
+class UserRepository implements RepositoryInterface
 {
 
     // 全件取得
     public function getAll()
     {
-        return Question::all();
+        return User::all();
     }
 
     // プライマリーキー（id）で1件取得
     public function getDataById($id)
     {
-        return Question::find($id);
+        return User::find($id);
     }
 
     // 質問登録
     public function save($data)
     {
-        $question = new Question;
-        $question->fill($data)->save();
+        $user = new User;
+        $user->fill($data)->save();
     }
 
     /**

@@ -18,7 +18,7 @@ class AnswerController extends Controller
     // 回答登録
     public function createAnswer($data)
     {
-        $this->question_service->create($data);
+        $this->answer_service->create($data);
     }
 
     // 回答更新
