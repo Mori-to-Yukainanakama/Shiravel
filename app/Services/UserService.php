@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Repositories\RepositoryInterface;
 use App\Repositories\UserRepository;
 
 // Serviceのインターフェースを継承してる
@@ -9,9 +10,9 @@ class UserService
 {
 
     // UserRepositoryのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
-    private $user_repository;
+    private RepositoryInterface $user_repository;
 
-    public function __construct(UserRepository $user_repository)
+    public function __construct(RepositoryInterface $user_repository)
     {
         $this->user_repository = $user_repository;
     }
@@ -26,10 +27,6 @@ class UserService
     public function getDataById($id)
     {
         return $this->user_repository->getDataById($id);
-    }
-
-    public function sample()
-    {
     }
 
     public function create($data)
