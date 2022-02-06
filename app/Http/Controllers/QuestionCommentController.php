@@ -14,7 +14,7 @@ class QuestionCommentController extends Controller
         $this->question_comment_service = $question_comment_service;
     }
 
-    // 質問登録
+    // 質問コメント登録
     public function create(Request $request)
     {
         $data = [
@@ -22,12 +22,11 @@ class QuestionCommentController extends Controller
             'question_id' => $request,
             'content' => $request,
         ];
-        dd($data);exit;
         $this->question_comment_service->create($data);
     }
 
     /**
-     * 質問削除
+     * 質問コメント削除
      * @param [int] $id
      * @return void
      */

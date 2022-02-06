@@ -34,7 +34,7 @@ class QuestionCommentRepository implements RepositoryInterface
      */
     public function delete($id)
     {
-        // Question::find($id)->delete();
+        // QuestionComment::find($id)->delete();
         // TODO レスポンス確認用のため削除
         return '削除完了';
     }
