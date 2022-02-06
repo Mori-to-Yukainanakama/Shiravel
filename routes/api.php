@@ -43,3 +43,4 @@ Route::group(['prefix' => 'v1'], function () {
 });
 
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+Route::delete('answerComment/{id}', [AnswerCommentController::class, 'delete']);
