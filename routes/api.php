@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuestionCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/', [UserController::class, 'getUsers']);
     });
 });
+
+Route::post('/questionComment/create', [QuestionCommentController::class, 'create']);
+
