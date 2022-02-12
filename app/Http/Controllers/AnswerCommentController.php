@@ -23,7 +23,8 @@ class AnswerCommentController extends Controller
       'content' => $request,
     ];
     // 挙動確認済み
-    dd($data);exit;
+    dd($data);
+    exit;
     // $this->answer_comment_service->create($data);
   }
 }

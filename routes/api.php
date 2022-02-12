@@ -38,6 +38,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/', [QuestionController::class, 'getQuestions']);
         Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
+        Route::post('/update', [QuestionController::class, 'update']);
     });
 });
 

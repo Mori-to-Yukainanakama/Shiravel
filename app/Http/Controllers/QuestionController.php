@@ -44,6 +44,18 @@ class QuestionController extends Controller
         $this->question_service->create($data);
     }
 
+    public function update()
+    {
+
+        $data = [
+            'user_id' => 1,
+            'title' => 'タイトル2222',
+            'content' => 'コンテンツ2222',
+        ];
+
+        $this->question_service->update($data);
+    }
+
     /**
      * 質問削除
      * @param [int] $id
