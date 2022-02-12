@@ -31,6 +31,7 @@ class AnswerCommentController extends Controller
   {
     $data = [
       'user_id' => $request->user_id,
+      'answer_id' => $request->answer_id,
       'content' => $request->content,
     ];
 
