@@ -36,12 +36,11 @@ Route::group(['prefix' => 'v1'], function () {
 
         // 質問全件取得api
         Route::get('/', [QuestionController::class, 'getQuestions']);
-        Route::get('/{id}', [QuestionController::class, 'getQuestion']);
+        Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
+        Route::post('/update', [QuestionController::class, 'update']);
     });
 });
-
-Route::get('/question', [QuestionController::class, 'getQuestion']);
 
 // /users パスを共通化
 Route::group(['prefix' => 'v1'], function () {
@@ -53,3 +52,4 @@ Route::group(['prefix' => 'v1'], function () {
 
 Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerComments']);
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+

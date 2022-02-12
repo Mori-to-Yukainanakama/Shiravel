@@ -27,6 +27,12 @@ class QuestionRepository implements RepositoryInterface
         $question->fill($data)->save();
     }
 
+    public function update($data)
+    {
+        $question = Question::find($data['user_id']);
+        $question->update($data);
+    }
+
     /**
      * 質問削除
      * @param [int] $id

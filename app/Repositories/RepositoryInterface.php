@@ -19,4 +19,6 @@ interface RepositoryInterface
 
     // 削除
     public function delete($id);
+
+    public function update($data);
 }
