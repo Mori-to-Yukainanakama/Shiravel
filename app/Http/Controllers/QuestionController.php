@@ -34,23 +34,23 @@ class QuestionController extends Controller
     }
 
     // 質問登録
-    public function create()
+    public function create(Request $request)
     {
         $data = [
-            'user_id' => 1,
-            'title' => 'タイトルうううう',
-            'content' => 'コンテンツつううううう',
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'content' => $request->content,
         ];
         $this->question_service->create($data);
     }
 
-    public function update()
+    public function update(Request $request)
     {
 
         $data = [
-            'user_id' => 1,
-            'title' => 'タイトル2222',
-            'content' => 'コンテンツ2222',
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'content' => $request->content,
         ];
 
         $this->question_service->update($data);
