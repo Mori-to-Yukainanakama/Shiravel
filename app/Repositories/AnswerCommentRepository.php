@@ -7,6 +7,9 @@ use App\Models\Models\AnswerComment;
 // Repositoryのインターフェースを継承
 class AnswerCommentRepository implements RepositoryInterface
 {
+
+
+
   // 質問登録
   public function save($data)
   {
@@ -24,9 +27,13 @@ class AnswerCommentRepository implements RepositoryInterface
     $answer_comment = new AnswerComment;
     return $answer_comment->where('user_id',$id)->firstOrFail();
   }
-
+  
   // 削除
-  public function delete($id) {
+  public function delete($id)
+  {
+  }
 
+  public function update($data)
+  {
   }
 }
