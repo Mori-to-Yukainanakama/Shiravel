@@ -26,9 +26,8 @@ class AnswerCommentRepository implements RepositoryInterface
 
   public function update($data)
   {
-    $answer_comment = AnswerComment::find($data['user_id']);
-    dd($answer_comment);
-    $answer_comment->update($data)->toSql();
+    $answer_comment = new AnswerComment;
+    $answer_comment->where('user_id', 1)->update($data);
   }
 
   // 削除
