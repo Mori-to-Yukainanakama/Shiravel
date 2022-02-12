@@ -18,4 +18,9 @@ class AnswerCommentService
     {
         return $this->answer_comment_repository->save($data);
     }
+
+    public function update($data)
+    {
+        return $this->answer_comment_repository->update($data);
+    }
 }

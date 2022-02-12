@@ -24,6 +24,12 @@ class AnswerCommentRepository implements RepositoryInterface
 
   }
 
+  public function update($data)
+  {
+    $answer_comment = AnswerComment::find($data['user_id']);
+    $answer_comment->update($data);
+  }
+
   // 削除
   public function delete($id) {
 

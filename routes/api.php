@@ -52,3 +52,4 @@ Route::group(['prefix' => 'v1'], function () {
 });
 
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
