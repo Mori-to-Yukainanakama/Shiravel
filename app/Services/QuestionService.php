@@ -33,6 +33,11 @@ class QuestionService
         return $this->question_repository->save($data);
     }
 
+    public function update($data)
+    {
+        return $this->question_repository->update($data);
+    }
+
     /**
      * 質問削除
      * @param [int] $id

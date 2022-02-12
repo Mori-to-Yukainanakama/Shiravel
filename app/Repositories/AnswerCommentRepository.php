@@ -7,6 +7,9 @@ use App\Models\Models\AnswerComment;
 // Repositoryのインターフェースを継承
 class AnswerCommentRepository implements RepositoryInterface
 {
+
+
+
   // 質問登録
   public function save($data)
   {
@@ -15,17 +18,21 @@ class AnswerCommentRepository implements RepositoryInterface
   }
 
   // 全件取得
-  public function getAll() {
-
+  public function getAll()
+  {
   }
 
   // テーブルのプライマリーキーで1件取得
-  public function getDataById($id) {
-
+  public function getDataById($id)
+  {
   }
 
   // 削除
-  public function delete($id) {
+  public function delete($id)
+  {
+  }
 
+  public function update($data)
+  {
   }
 }

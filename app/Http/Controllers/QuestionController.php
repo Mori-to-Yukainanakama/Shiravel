@@ -18,8 +18,10 @@ class QuestionController extends Controller
     }
 
     // 質問1件取得
-    public function getQuestion($id)
+    // 引数に$idを付与
+    public function getQuestion()
     {
+        $id = 1;
         $question = $this->question_service->getDataById($id);
         return $question;
     }
@@ -40,6 +42,18 @@ class QuestionController extends Controller
             'content' => 'コンテンツつううううう',
         ];
         $this->question_service->create($data);
+    }
+
+    public function update()
+    {
+
+        $data = [
+            'user_id' => 1,
+            'title' => 'タイトル2222',
+            'content' => 'コンテンツ2222',
+        ];
+
+        $this->question_service->update($data);
     }
 
     /**

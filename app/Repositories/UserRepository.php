@@ -27,6 +27,10 @@ class UserRepository implements RepositoryInterface
         $user->fill($data)->save();
     }
 
+    public function update($data)
+    {
+    }
+
     /**
      * 質問削除
      * @param [int] $id
