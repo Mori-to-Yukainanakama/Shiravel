@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerCommentController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -49,3 +50,5 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/', [UserController::class, 'getUsers']);
     });
 });
+
+Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
