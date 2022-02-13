@@ -2,9 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerCommentController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +23,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::post('/register', [UserAuthController::class, 'register']);
+
+
+
+
+
 // /questions パスを共通化
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'questions'], function () {
 
         // 質問全件取得api
         Route::get('/', [QuestionController::class, 'getQuestions']);
-        Route::get('/{id}', [QuestionController::class, 'getQuestion']);
+        Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
+        Route::post('/update', [QuestionController::class, 'update']);
     });
 });
-
-Route::get('/question', [QuestionController::class, 'getQuestion']);
 
 // /users パスを共通化
 Route::group(['prefix' => 'v1'], function () {
@@ -44,3 +52,8 @@ Route::group(['prefix' => 'v1'], function () {
 
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
 Route::delete('answerComment/{id}', [AnswerCommentController::class, 'delete']);
+Route::get('/answerComments', [AnswerCommentController::class, 'getAnswerComments']);
+Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerComment']);
+Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
+
