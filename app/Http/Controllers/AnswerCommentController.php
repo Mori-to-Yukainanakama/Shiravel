@@ -19,6 +19,12 @@ class AnswerCommentController extends Controller
   {
       $answer_comments = $this->answer_comment_service->getAll();
       return $answer_comments;
+
+  // 質問1件取得
+  public function getAnswerComment($id)
+  {
+    $answer_comment = $this->answer_comment_service->getDataById($id);
+    return $answer_comment;
   }
 
   // 回答コメント登録
