@@ -21,4 +21,25 @@ class Question extends Model
         'is_answered',
         'is_solved',
     ];
+
+    // hasManyメソッドは相手が複数あるときに取得できる
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answer', 'answer_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function questionComments()
+    {
+        return $this->hasMany('App\Models\QuestionComment', 'question_comment_id');
+    }
+
+    public function bestAnswer()
+    {
+        return $this->hasOne('App\Models\BestAnswer', 'best_answer_id');
+    }
 }

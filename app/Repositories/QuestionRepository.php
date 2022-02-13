@@ -33,6 +33,14 @@ class QuestionRepository implements RepositoryInterface
         $question->update($data);
     }
 
+    public function getCommentAnswer($id)
+    {
+        $question = $this->getDataById($id);
+        $answers = $question::with('answers.answerComments')->get();
+        $question_comments = Question::with('questionComments')->get();
+        return ['answers' => $answers, 'questionComment' => $question_comments];
+    }
+
     /**
      * 質問削除
      * @param [int] $id

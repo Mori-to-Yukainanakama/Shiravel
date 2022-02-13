@@ -19,17 +19,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
-Route::post('/register', [UserAuthController::class, 'register']);
-
-
-
-
-
 // /questions パスを共通化
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'questions'], function () {
@@ -39,6 +28,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
         Route::post('/update', [QuestionController::class, 'update']);
+        Route::get('/answer', [QuestionController::class, 'getQuestionAnswerComment']);
     });
 });
 

@@ -17,8 +17,9 @@ class AnswerCommentController extends Controller
   // ユーザー全取得
   public function getAnswerComments()
   {
-      $answer_comments = $this->answer_comment_service->getAll();
-      return $answer_comments;
+    $answer_comments = $this->answer_comment_service->getAll();
+    return $answer_comments;
+  }
 
   // 質問1件取得
   public function getAnswerComment($id)
