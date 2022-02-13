@@ -39,4 +39,13 @@ class AnswerCommentController extends Controller
     // 挙動確認済み
     $this->answer_comment_service->create($data);
   }
+
+  public function update(Request $request)
+  {
+    $data = [
+      'user_id' => $request->user_id,
+      'content' => $request->content,
+    ];
+    $this->answer_comment_service->update($data);
+  }
 }
