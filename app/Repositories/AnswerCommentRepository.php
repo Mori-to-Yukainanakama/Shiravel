@@ -7,11 +7,11 @@ use App\Models\Models\AnswerComment;
 // Repositoryのインターフェースを継承
 class AnswerCommentRepository implements RepositoryInterface
 {
-  // 質問登録
+  // 回答コメント登録
   public function save($data)
   {
-    $question = new AnswerComment;
-    $question->fill($data)->save();
+    $answer_comment = new AnswerComment;
+    $answer_comment->fill($data)->save();
   }
 
   // 全件取得
