@@ -14,6 +14,19 @@ class AnswerCommentController extends Controller
     $this->answer_comment_service = $answer_comment_service;
   }
 
+  // ユーザー全取得
+  public function getAnswerComments()
+  {
+      $answer_comments = $this->answer_comment_service->getAll();
+      return $answer_comments;
+
+  // 質問1件取得
+  public function getAnswerComment($id)
+  {
+    $answer_comment = $this->answer_comment_service->getDataById($id);
+    return $answer_comment;
+  }
+
   // 回答コメント登録
   public function create(Request $request)
   {
@@ -25,5 +38,14 @@ class AnswerCommentController extends Controller
 
     // 挙動確認済み
     $this->answer_comment_service->create($data);
+  }
+
+  public function update(Request $request)
+  {
+    $data = [
+      'user_id' => $request->user_id,
+      'content' => $request->content,
+    ];
+    $this->answer_comment_service->update($data);
   }
 }

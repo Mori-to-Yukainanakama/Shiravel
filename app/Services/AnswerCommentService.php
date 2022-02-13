@@ -14,8 +14,19 @@ class AnswerCommentService
         $this->answer_comment_repository = $answer_comment_repository;
     }
 
+    // 全件取得
+    public function getAll()
+    {
+        return $this->answer_comment_repository->getAll();
+    }
+
     public function create($data)
     {
         return $this->answer_comment_repository->save($data);
+    }
+
+    public function update($data)
+    {
+        return $this->answer_comment_repository->update($data);
     }
 }
