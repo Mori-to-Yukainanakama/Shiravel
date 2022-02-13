@@ -20,11 +20,13 @@ class AnswerCommentRepository implements RepositoryInterface
   // 全件取得
   public function getAll()
   {
+      return AnswerComment::all();
   }
 
   // テーブルのプライマリーキーで1件取得
-  public function getDataById($id)
-  {
+  public function getDataById($id) {
+    $answer_comment = new AnswerComment;
+    return $answer_comment->where('user_id',$id)->firstOrFail();
   }
 
   public function update($data)
