@@ -18,15 +18,16 @@ class AnswerCommentRepository implements RepositoryInterface
   }
 
   // 全件取得
-  public function getAll()
-  {
+  public function getAll() {
+    
   }
 
   // テーブルのプライマリーキーで1件取得
-  public function getDataById($id)
-  {
+  public function getDataById($id) {
+    $answer_comment = new AnswerComment;
+    return $answer_comment->where('user_id',$id)->firstOrFail();
   }
-
+  
   // 削除
   public function delete($id)
   {

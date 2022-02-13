@@ -50,4 +50,5 @@ Route::group(['prefix' => 'v1'], function () {
     });
 });
 
+Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerComment']);
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);

@@ -15,7 +15,7 @@ class AnswerComment extends Model
     protected $fillable = [
         'answer_comment_id',
         'user_id',
-        'question_id',
+        'answer_id',
         'content',
     ];
 
