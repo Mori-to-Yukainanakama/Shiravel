@@ -14,8 +14,22 @@ class AnswerCommentService
         $this->answer_comment_repository = $answer_comment_repository;
     }
 
+    // 全件取得
+    public function getAll()
+    {
+        return $this->answer_comment_repository->getAll();
+    }
+
     public function create($data)
     {
         return $this->answer_comment_repository->save($data);
+    }
+
+  
+    public function delete($id)
+    {
+        // $this->answer_comment_repository->delete($id);
+        // TODO API疎通確認用のため削除
+        return $this->answer_comment_repository->delete($id);
     }
 }

@@ -41,3 +41,9 @@ Route::group(['prefix' => 'v1'], function () {
 });
 
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+Route::delete('answerComment/{id}', [AnswerCommentController::class, 'delete']);
+Route::get('/answerComments', [AnswerCommentController::class, 'getAnswerComments']);
+Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerComment']);
+Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
+

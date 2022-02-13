@@ -14,17 +14,48 @@ class AnswerCommentController extends Controller
     $this->answer_comment_service = $answer_comment_service;
   }
 
-  // 質問登録
+  // ユーザー全取得
+  public function getAnswerComments()
+  {
+      $answer_comments = $this->answer_comment_service->getAll();
+      return $answer_comments;
+
+  // 質問1件取得
+  public function getAnswerComment($id)
+  {
+    $answer_comment = $this->answer_comment_service->getDataById($id);
+    return $answer_comment;
+  }
+
+  // 回答コメント登録
   public function create(Request $request)
   {
     $data = [
-      'user_id' => $request,
-      'answer_id' => $request,
-      'content' => $request,
+      'user_id' => $request->user_id,
+      'answer_id' => $request->answer_id,
+      'content' => $request->content,
     ];
+
     // 挙動確認済み
-    dd($data);
-    exit;
-    // $this->answer_comment_service->create($data);
+    $this->answer_comment_service->create($data);
+  }
+
+  public function update(Request $request)
+  {
+    $data = [
+      'user_id' => $request->user_id,
+      'content' => $request->content,
+    ];
+    $this->answer_comment_service->update($data);
+  }
+
+  /**
+   * 質問削除
+   * @param [int] $id
+   * @return void
+   */
+  public function delete($id)
+  {
+    return $this->answer_comment_service->delete($id);
   }
 }
