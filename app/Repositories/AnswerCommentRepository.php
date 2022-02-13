@@ -18,8 +18,9 @@ class AnswerCommentRepository implements RepositoryInterface
   }
 
   // 全件取得
-  public function getAll() {
-    
+  public function getAll()
+  {
+      return AnswerComment::all();
   }
 
   // テーブルのプライマリーキーで1件取得

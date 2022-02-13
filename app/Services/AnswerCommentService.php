@@ -14,10 +14,10 @@ class AnswerCommentService
         $this->answer_comment_repository = $answer_comment_repository;
     }
 
-    // プライマリーキー（id）で1件取得
-    public function getDataById($id)
+    // 全件取得
+    public function getAll()
     {
-        return $this->answer_comment_repository->getDataById($id);
+        return $this->answer_comment_repository->getAll();
     }
 
     public function create($data)
