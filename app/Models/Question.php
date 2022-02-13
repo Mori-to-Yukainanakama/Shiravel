@@ -37,4 +37,9 @@ class Question extends Model
     {
         return $this->hasMany('App\Models\QuestionComment', 'question_comment_id');
     }
+
+    public function bestAnswer()
+    {
+        return $this->hasOne('App\Models\BestAnswer', 'best_answer_id');
+    }
 }

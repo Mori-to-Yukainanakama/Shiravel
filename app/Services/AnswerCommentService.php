@@ -20,12 +20,22 @@ class AnswerCommentService
         return $this->answer_comment_repository->getAll();
     }
 
+    // プライマリーキー（id）で1件取得
+    public function getDataById($id)
+    {
+        return $this->answer_comment_repository->getDataById($id);
+    }
+
     public function create($data)
     {
         return $this->answer_comment_repository->save($data);
     }
 
-  
+    public function update($data)
+    {
+        return $this->answer_comment_repository->update($data);
+    }
+
     public function delete($id)
     {
         // $this->answer_comment_repository->delete($id);
