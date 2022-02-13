@@ -48,4 +48,14 @@ class AnswerCommentController extends Controller
     ];
     $this->answer_comment_service->update($data);
   }
+
+  /**
+   * 質問削除
+   * @param [int] $id
+   * @return void
+   */
+  public function delete($id)
+  {
+    return $this->answer_comment_service->delete($id);
+  }
 }

@@ -36,11 +36,7 @@ class AnswerCommentRepository implements RepositoryInterface
   }
 
   // 削除
-  public function delete($id)
-  {
-  }
-
-  public function update($data)
-  {
+  public function delete($id) {
+    return '削除完了';
   }
 }
