@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 認証系
+Route::post('/login', [Controllers\LoginController::class, 'login']);
+Route::post('/logout', [Controllers\LoginController::class, 'logout']);
+Route::post('/register', [Controllers\RegisterController::class, 'register']);
