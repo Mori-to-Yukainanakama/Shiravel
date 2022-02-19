@@ -48,6 +48,21 @@ class User extends Authenticatable
     // hasManyメソッドは相手が複数あるときに取得できる
     public function questions()
     {
-        return $this->hasMany('App\Models\Question', 'question_id');
+        return $this->hasMany('App\Models\Question', 'user_id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answer', 'user_id');
+    }
+
+    public function answerComments()
+    {
+        return $this->hasMany('App\Models\AnswerComment', 'user_id');
+    }
+
+    public function questionComments()
+    {
+        return $this->hasMany('App\Models\QuestionComment', 'user_id');
     }
 }

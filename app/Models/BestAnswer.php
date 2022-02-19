@@ -11,9 +11,30 @@ class BestAnswer extends Model
 
     protected $primaryKey = 'best_answer_id';
 
+    protected $fillable = [
+        'question_id',
+        'answer_id',
+        'answer_comment_id',
+        'question_comment_id',
+    ];
 
     public function question()
     {
         return $this->belongsTo('App\Models\Question', 'question_id');
+    }
+
+    public function answer()
+    {
+        return $this->belongsTo('App\Models\Answer', 'answer_id');
+    }
+
+    public function answerComment()
+    {
+        return $this->belongsTo('App\Models\AnswerComment', 'answer_comment_id');
+    }
+
+    public function questionComment()
+    {
+        return $this->belongsTo('App\Models\QuestionComment', 'question_comment_id');
     }
 }

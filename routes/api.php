@@ -1,12 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerCommentController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\BestAnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +26,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
         Route::post('/update', [QuestionController::class, 'update']);
-        Route::get('/answer', [QuestionController::class, 'getQuestionAnswerComment']);
+        Route::get('/detail', [QuestionController::class, 'getQuestionDetail']);
     });
 });
 
@@ -40,6 +38,7 @@ Route::group(['prefix' => 'v1'], function () {
     });
 });
 
+
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
 Route::delete('answerComment/{id}', [AnswerCommentController::class, 'delete']);
 Route::get('/answerComments', [AnswerCommentController::class, 'getAnswerComments']);
@@ -47,3 +46,4 @@ Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerCom
 Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
 Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
 
+Route::post('/bestAnswer', [BestAnswerController::class, 'create']);

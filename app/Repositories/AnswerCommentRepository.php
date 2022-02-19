@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Models\AnswerComment;
+use App\Models\AnswerComment;
 
 // Repositoryのインターフェースを継承
 class AnswerCommentRepository implements RepositoryInterface
@@ -17,13 +17,14 @@ class AnswerCommentRepository implements RepositoryInterface
   // 全件取得
   public function getAll()
   {
-      return AnswerComment::all();
+    return AnswerComment::all();
   }
 
   // テーブルのプライマリーキーで1件取得
-  public function getDataById($id) {
+  public function getDataById($id)
+  {
     $answer_comment = new AnswerComment;
-    return $answer_comment->where('user_id',$id)->firstOrFail();
+    return $answer_comment->where('user_id', $id)->firstOrFail();
   }
 
   public function update($data)
@@ -33,7 +34,8 @@ class AnswerCommentRepository implements RepositoryInterface
   }
 
   // 削除
-  public function delete($id) {
+  public function delete($id)
+  {
     return '削除完了';
   }
 }
