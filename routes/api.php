@@ -38,11 +38,22 @@ Route::post('/answerComment/create', [AnswerCommentController::class, 'create'])
 Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
 
 Route::post('/bestAnswer', [BestAnswerController::class, 'create']);
->>>>>>> 3ac44704d36a7b0dbdf75dfcf8f9daf78796251a
+
 // /users パスを共通化
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'users'], function () {
 
         Route::get('/', [UserController::class, 'getUsers']);
+    });
+});
+
+// /answer パスを共通化
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'answer'], function () {
+
+        Route::get('/get', [AnswerController::class, 'getAnswer']);
+        Route::post('/create', [AnswerController::class, 'createAnswer']);
+        Route::delete('/{id}', [AnswerController::class, 'deleteAnswer']);
+        Route::post('/update', [AnswerController::class, 'updateAnswer']);
     });
 });
