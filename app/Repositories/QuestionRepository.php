@@ -11,7 +11,7 @@ class QuestionRepository implements RepositoryInterface
     // 全件取得
     public function getAll()
     {
-        return Question::all();
+        return Question::with('user')->get();
     }
 
     // プライマリーキー（id）で1件取得
@@ -25,6 +25,29 @@ class QuestionRepository implements RepositoryInterface
     {
         $question = new Question;
         $question->fill($data)->save();
+    }
+
+    public function update($data)
+    {
+        $question = Question::find($data['user_id']);
+        $question->update($data);
+    }
+
+    public function getQuestionDetail($id)
+    {
+        // 質問のベストアンサーを取得
+        $bestAnswer = Question::with('bestAnswer.answerComment')->find($id)->bestanswer;
+        if ($bestAnswer == null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->find($id);
+        }
+
+        if ($bestAnswer->answer_id != null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->with('bestAnswer.answer.user')->find($id);
+        } else if ($bestAnswer->answer_comment_id != null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->with('bestAnswer.answerComment.user')->find($id);
+        } else if ($bestAnswer->question_comment_id != null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->with('bestAnswer.questionComment')->find($id);
+        }
     }
 
     /**

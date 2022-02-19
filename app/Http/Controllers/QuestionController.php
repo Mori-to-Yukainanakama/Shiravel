@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Services\QuestionService;
-
+use App\Models\Question;
+use App\Models\User;
+use App\Services\BestAnswerService;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -17,29 +19,72 @@ class QuestionController extends Controller
         $this->question_service = $question_service;
     }
 
-    // 質問1件取得
-    public function getQuestion($id)
+    /**
+     * 質問1件取得
+     * 引数に$idを付与
+     * @param [int] $id
+     * @return Question
+     */
+    public function getQuestion(Request $request)
     {
-        $question = $this->question_service->getDataById($id);
-        return $question;
+        return $this->question_service->getDataById($request->question_id);
     }
 
-    // 質問全件取得
+    /**
+     * 質問詳細取得
+     * 引数に$idを付与
+     * @param [int] $id
+     * @return Question
+     */
+    public function getQuestionDetail(Request $request)
+    {
+        return $this->question_service->getQuestionDetail($request->question_id);
+    }
+
+    /**
+     * 質問全件取得
+     *
+     * @param
+     * @return Question
+     */
     public function getQuestions()
     {
-        $questions = $this->question_service->getAll();
-        return $questions;
+        return $this->question_service->getAll();
     }
 
-    // 質問登録
-    public function create()
+    /**
+     * 質問登録
+     *
+     * @param Request
+     * @return void
+     */
+    public function create(Request $request)
     {
         $data = [
-            'user_id' => 1,
-            'title' => 'タイトルうううう',
-            'content' => 'コンテンツつううううう',
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'content' => $request->content,
         ];
         $this->question_service->create($data);
+    }
+
+    /**
+     * 質問更新
+     *
+     * @param Request
+     * @return void
+     */
+    public function update(Request $request)
+    {
+
+        $data = [
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'content' => $request->content,
+        ];
+
+        // TODO API疎通確認のため削除
+        return $this->question_service->update($data);
     }
 
     /**

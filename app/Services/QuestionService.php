@@ -3,15 +3,14 @@
 namespace App\Services;
 
 use App\Repositories\QuestionRepository;
-use App\Repositories\RepositoryInterface;
 
 class QuestionService
 {
 
     // QuestionRepositoryのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
-    private RepositoryInterface $question_repository;
+    private QuestionRepository $question_repository;
 
-    public function __construct(RepositoryInterface $question_repository)
+    public function __construct(QuestionRepository $question_repository)
     {
         $this->question_repository = $question_repository;
     }
@@ -31,6 +30,16 @@ class QuestionService
     public function create($data)
     {
         return $this->question_repository->save($data);
+    }
+
+    public function update($data)
+    {
+        return $this->question_repository->update($data);
+    }
+
+    public function getQuestionDetail($id)
+    {
+        return $this->question_repository->getQuestionDetail($id);
     }
 
     /**
