@@ -21,9 +21,9 @@ class AnswerController extends Controller
      * @param Request
      * @return Answer
      */
-    public function getAnswer(Request $request)
+    public function getAnswer($question_id)
     {
-        $answer = $this->answer_service->getAll($request->question_id);
+        $answer = $this->answer_service->getAll($question_id);
         return $answer;
     }
 
@@ -57,9 +57,9 @@ class AnswerController extends Controller
      * @param Request
      * @return void
      */
-    public function deleteAnswer(Request $request)
+    public function deleteAnswer($id)
     {
-        $this->answer_service->delete($data);
+        $this->answer_service->delete($id);
     }
 
 }
