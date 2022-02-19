@@ -17,7 +17,7 @@ class AnswerCommentRepository implements RepositoryInterface
   // 全件取得
   public function getAll()
   {
-      return AnswerComment::all();
+    return AnswerComment::all();
   }
 
   // テーブルのプライマリーキーで1件取得
@@ -27,8 +27,7 @@ class AnswerCommentRepository implements RepositoryInterface
 
   public function update($data)
   {
-    $answer_comment = new AnswerComment;
-    $answer_comment->where('user_id', 1)->update($data);
+    AnswerComment::where('user_id', 1)->update($data);
   }
 
   // 削除
