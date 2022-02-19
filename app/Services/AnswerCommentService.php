@@ -7,9 +7,9 @@ use App\Repositories\RepositoryInterface;
 
 class AnswerCommentService
 {
-    private RepositoryInterface $answer_comment_repository;
+    private AnswerCommentRepository $answer_comment_repository;
 
-    public function __construct(RepositoryInterface $answer_comment_repository)
+    public function __construct(AnswerCommentRepository $answer_comment_repository)
     {
         $this->answer_comment_repository = $answer_comment_repository;
     }
