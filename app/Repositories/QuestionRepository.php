@@ -17,7 +17,7 @@ class QuestionRepository implements RepositoryInterface
     // プライマリーキー（id）で1件取得
     public function getDataById($id)
     {
-        return Question::find($id);
+        return Question::findOrFail(2);
     }
 
     // 質問登録
@@ -29,14 +29,14 @@ class QuestionRepository implements RepositoryInterface
 
     public function update($data)
     {
-        $question = Question::find($data['user_id']);
+        $question = Question::findOrFail($data['user_id']);
         $question->update($data);
     }
 
     public function getQuestionDetail($id)
     {
         // 質問のベストアンサーを取得
-        $bestAnswer = Question::with('bestAnswer.answerComment')->find($id)->bestanswer;
+        $bestAnswer = Question::with('bestAnswer.answerComment')->findOrFail($id)->bestanswer;
         if ($bestAnswer == null) {
             return $question = Question::with('answers.answerComments')->with('questionComments')->find($id);
         }

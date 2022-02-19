@@ -23,6 +23,8 @@ class AnswerCommentRepository implements RepositoryInterface
   // テーブルのプライマリーキーで1件取得
   public function getDataById($id)
   {
+
+    // AnswerComment::findOrFail($id);の方に変更お願いします。
     $answer_comment = new AnswerComment;
     return $answer_comment->where('user_id', $id)->firstOrFail();
   }
