@@ -36,8 +36,4 @@ class AnswerCommentRepository implements RepositoryInterface
   public function delete($id)
   {
   }
-
-  public function update($data)
-  {
-  }
 }

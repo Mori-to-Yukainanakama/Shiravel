@@ -17,8 +17,9 @@ class AnswerCommentController extends Controller
   // ユーザー全取得
   public function getAnswerComments()
   {
-      $answer_comments = $this->answer_comment_service->getAll();
-      return $answer_comments;
+    $answer_comments = $this->answer_comment_service->getAll();
+    return $answer_comments;
+  }
 
   // 質問1件取得
   public function getAnswerComment($id)
@@ -47,5 +48,15 @@ class AnswerCommentController extends Controller
       'content' => $request->content,
     ];
     $this->answer_comment_service->update($data);
+  }
+
+  /**
+   * 質問削除
+   * @param [int] $id
+   * @return void
+   */
+  public function delete($id)
+  {
+    return $this->answer_comment_service->delete($id);
   }
 }
