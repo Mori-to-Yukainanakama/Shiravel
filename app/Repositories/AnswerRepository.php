@@ -8,21 +8,30 @@ use App\Models\Answer;
 class AnswerRepository implements RepositoryInterface
 {
 
-    // 全件取得
-    public function getAll()
+    // 質問に紐づく回答取得
+    public function getAll($question_id)
     {
-        return Answer::all();
+        $answers = Answer::where("question_id", "=" , $question_id)->get();
+        return $answers;
     }
 
-    // プライマリーキー（id）で1件取得
-    public function getDataById($id)
-    {
-        return Answer::find($id);
-    }
-
+    // 回答登録
     public function save($data)
     {
-        $answer = new Answer;
+        $answer = new Answer();
         $answer->fill($data)->save();
+    }
+    
+    // 回答削除
+    public function delete($id)
+    {
+        Answer::find($id)->delete();
+    }
+
+    // 回答更新
+    public function update($data)
+    {
+        $answer = Answer::findOrFail($id["answer_id"]);        
+        $answer->updata($data);
     }
 }
