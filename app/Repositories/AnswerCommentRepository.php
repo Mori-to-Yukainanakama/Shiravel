@@ -22,7 +22,7 @@ class AnswerCommentRepository implements RepositoryInterface
 
   // テーブルのプライマリーキーで1件取得
   public function getDataById($id) {
-    return AnswerComment::firstOrFail($id);
+    return AnswerComment::find($id);
   }
 
   public function update($data)

@@ -22,12 +22,12 @@ class AnswerCommentController extends Controller
   }
 
   // 質問1件取得
-  public function getAnswerComment($id)
+  public function getAnswerComment(Request $request)
   {
-    $answer_comment = $this->answer_comment_service->getDataById($id);
+    $answer_comment = $this->answer_comment_service->getDataById($request->user_id);
     return $answer_comment;
   }
-
+  
   // 回答コメント登録
   public function create(Request $request)
   {
