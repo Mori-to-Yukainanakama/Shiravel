@@ -11,7 +11,7 @@ class QuestionRepository implements RepositoryInterface
     // 全件取得
     public function getAll()
     {
-        return Question::all();
+        return Question::with('user')->get();
     }
 
     // プライマリーキー（id）で1件取得
@@ -33,12 +33,21 @@ class QuestionRepository implements RepositoryInterface
         $question->update($data);
     }
 
-    public function getCommentAnswer($id)
+    public function getQuestionDetail($id)
     {
-        $question = $this->getDataById($id);
-        $answers = $question::with('answers.answerComments')->get();
-        $question_comments = Question::with('questionComments')->get();
-        return ['answers' => $answers, 'questionComment' => $question_comments];
+        // 質問のベストアンサーを取得
+        $bestAnswer = Question::with('bestAnswer.answerComment')->find($id)->bestanswer;
+        if ($bestAnswer == null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->find($id);
+        }
+
+        if ($bestAnswer->answer_id != null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->with('bestAnswer.answer.user')->find($id);
+        } else if ($bestAnswer->answer_comment_id != null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->with('bestAnswer.answerComment.user')->find($id);
+        } else if ($bestAnswer->question_comment_id != null) {
+            return $question = Question::with('answers.answerComments')->with('questionComments')->with('bestAnswer.questionComment')->find($id);
+        }
     }
 
     /**

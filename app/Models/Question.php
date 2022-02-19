@@ -23,23 +23,28 @@ class Question extends Model
     ];
 
     // hasManyメソッドは相手が複数あるときに取得できる
-    public function answers()
-    {
-        return $this->hasMany('App\Models\Answer', 'answer_id');
-    }
-
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answer', 'question_id');
+    }
+
     public function questionComments()
     {
-        return $this->hasMany('App\Models\QuestionComment', 'question_comment_id');
+        return $this->hasMany('App\Models\QuestionComment', 'question_id');
+    }
+
+    public function answerComments()
+    {
+        return $this->hasMany('App\Models\AnswerComment', 'question_id');
     }
 
     public function bestAnswer()
     {
-        return $this->hasOne('App\Models\BestAnswer', 'best_answer_id');
+        return $this->hasOne('App\Models\BestAnswer', 'question_id');
     }
 }

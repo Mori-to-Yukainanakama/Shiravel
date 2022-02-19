@@ -12,6 +12,12 @@ class Answer extends Model
     protected $primaryKey = 'answer_id';
 
     // belongsToでquestion側を取得している
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
     public function question()
     {
         // 相手のモデルを指定　belongsToメソッドは、主テーブル(Person)とは逆の従テーブルからのレコード取得使用する
@@ -20,6 +26,6 @@ class Answer extends Model
 
     public function answerComments()
     {
-        return $this->hasMany('App\Models\AnswerComment', 'answer_comment_id');
+        return $this->hasMany('App\Models\AnswerComment', 'answer_id');
     }
 }

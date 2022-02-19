@@ -37,9 +37,9 @@ class QuestionService
         return $this->question_repository->update($data);
     }
 
-    public function getCommentAnswer($id)
+    public function getQuestionDetail($id)
     {
-        return $this->question_repository->getCommentAnswer($id);
+        return $this->question_repository->getQuestionDetail($id);
     }
 
     /**

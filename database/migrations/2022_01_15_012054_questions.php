@@ -17,7 +17,7 @@ class Questions extends Migration
             $table->increments('question_id')->unsigned();
             $table->integer('user_id')->nullable(false)->unsigned();
             $table->string('title', 255)->nullable(false);
-            $table->string('content', 255)->nullable(false);
+            $table->text('content')->nullable(false);
             $table->boolean('is_answered')->default(false);
             $table->boolean('is_solved')->default(false);
             $table->timestamps();

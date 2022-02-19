@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\QuestionService;
 use App\Models\Question;
 use App\Models\User;
+use App\Services\BestAnswerService;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -24,10 +25,9 @@ class QuestionController extends Controller
      * @param [int] $id
      * @return Question
      */
-    public function getQuestion()
+    public function getQuestion(Request $request)
     {
-        $id = 1;
-        return $this->question_service->getDataById($id);
+        return $this->question_service->getDataById($request->question_id);
     }
 
     /**
@@ -36,10 +36,9 @@ class QuestionController extends Controller
      * @param [int] $id
      * @return Question
      */
-    public function getQuestionAnswerComment()
+    public function getQuestionDetail(Request $request)
     {
-        $id = 1;
-        return $this->question_service->getCommentAnswer($id);
+        return $this->question_service->getQuestionDetail($request->question_id);
     }
 
     /**
