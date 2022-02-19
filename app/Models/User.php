@@ -45,14 +45,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function createToken(string $name, array $abilities = ['*'])
+    // hasManyメソッドは相手が複数あるときに取得できる
+    public function questions()
     {
-        $token = $this->tokens()->create([
-            'name' => $name,
-            'token' => hash('sha256', $plainTextToken = Str::random(40)),
-            'abilities' => $abilities,
-        ]);
+        return $this->hasMany('App\Models\Question', 'user_id');
+    }
 
-        return new NewAccessToken($token, $token->id . '|' . $plainTextToken);
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answer', 'user_id');
+    }
+
+    public function answerComments()
+    {
+        return $this->hasMany('App\Models\AnswerComment', 'user_id');
+    }
+
+    public function questionComments()
+    {
+        return $this->hasMany('App\Models\QuestionComment', 'user_id');
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AnswerCommentController;
+use App\Http\Controllers\BestAnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,30 +17,28 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
-Route::post('/register', [UserAuthController::class, 'register']);
-
-
-
-
-
 // /questions パスを共通化
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'questions'], function () {
 
         // 質問全件取得api
         Route::get('/', [QuestionController::class, 'getQuestions']);
-        Route::get('/{id}', [QuestionController::class, 'getQuestion']);
+        Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
+        Route::post('/update', [QuestionController::class, 'update']);
+        Route::get('/detail', [QuestionController::class, 'getQuestionDetail']);
     });
 });
 
-Route::get('/question', [QuestionController::class, 'getQuestion']);
+Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+Route::delete('answerComment/{id}', [AnswerCommentController::class, 'delete']);
+Route::get('/answerComments', [AnswerCommentController::class, 'getAnswerComments']);
+Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerComment']);
+Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
+Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
 
+Route::post('/bestAnswer', [BestAnswerController::class, 'create']);
+>>>>>>> 3ac44704d36a7b0dbdf75dfcf8f9daf78796251a
 // /users パスを共通化
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'users'], function () {

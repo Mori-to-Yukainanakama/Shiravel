@@ -17,7 +17,7 @@ class UserRepository implements RepositoryInterface
     // プライマリーキー（id）で1件取得
     public function getDataById($id)
     {
-        return User::find($id);
+        return User::findOrFail($id);
     }
 
     // 質問登録
@@ -25,6 +25,10 @@ class UserRepository implements RepositoryInterface
     {
         $user = new User;
         $user->fill($data)->save();
+    }
+
+    public function update($data)
+    {
     }
 
     /**
