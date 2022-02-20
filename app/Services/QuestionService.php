@@ -15,10 +15,64 @@ class QuestionService
         $this->question_repository = $question_repository;
     }
 
-    // 全件取得
+    /**
+     * 質問全件取得
+     *
+     * @return Question
+     */
     public function getAll()
     {
         return $this->question_repository->getAll();
+    }
+
+    /**
+     * 質問一覧取得（新着順）
+     *
+     * @return Question
+     */
+    public function getNewArrival()
+    {
+        return $this->question_repository->getNewArrival();
+    }
+
+    /**
+     * 質問一覧取得（未回答）
+     *
+     * @return Question
+     */
+    public function getUnanswered()
+    {
+        return $this->question_repository->getUnanswered();
+    }
+
+    /**
+     * 質問一覧取得（回答有）
+     *
+     * @return Question
+     */
+    public function getAnswered()
+    {
+        return $this->question_repository->getAnswered();
+    }
+
+    /**
+     * 質問一覧取得（未解決）
+     *
+     * @return Question
+     */
+    public function getUnsolved()
+    {
+        return $this->question_repository->getUnsolved();
+    }
+
+    /**
+     * 質問一覧取得（解決済）
+     *
+     * @return Question
+     */
+    public function getSolved()
+    {
+        return $this->question_repository->getSolved();
     }
 
     // プライマリーキー（id）で1件取得
