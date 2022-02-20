@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Models\AnswerComment;
+use App\Models\AnswerComment;
 
 // Repositoryのインターフェースを継承
 class AnswerCommentRepository implements RepositoryInterface
@@ -30,7 +30,7 @@ class AnswerCommentRepository implements RepositoryInterface
 
   public function update($data)
   {
-    // findOrFailだと上手くいかなかった為この書き方に変更
+    // findOrFailの使い方が分からず上手くいかないので,この書き方に変更
     // できそうであれば修正
     $answer_comment = AnswerComment::where("user_id", "=", $data["user_id"])->update($data);
   }  
@@ -38,5 +38,6 @@ class AnswerCommentRepository implements RepositoryInterface
   // 削除
   public function delete($id)
   {
+    return '削除完了';
   }
 }

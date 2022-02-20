@@ -35,4 +35,11 @@ class AnswerCommentService
     {
         return $this->answer_comment_repository->update($data);
     }
+
+    public function delete($id)
+    {
+        // $this->answer_comment_repository->delete($id);
+        // TODO API疎通確認用のため削除
+        return $this->answer_comment_repository->delete($id);
+    }
 }

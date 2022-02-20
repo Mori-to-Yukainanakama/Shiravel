@@ -29,14 +29,8 @@ class UserController extends Controller
         return $users;
     }
 
-    // 質問登録
+    //
     public function create()
     {
-        $data = [
-            'user_id' => 1,
-            'title' => 'タイトルうううう',
-            'content' => 'コンテンツつううううう',
-        ];
-        $this->question_service->create($data);
     }
 }

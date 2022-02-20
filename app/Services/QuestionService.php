@@ -37,6 +37,11 @@ class QuestionService
         return $this->question_repository->update($data);
     }
 
+    public function getQuestionDetail($id)
+    {
+        return $this->question_repository->getQuestionDetail($id);
+    }
+
     /**
      * 質問削除
      * @param [int] $id
