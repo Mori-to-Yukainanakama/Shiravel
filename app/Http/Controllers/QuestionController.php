@@ -46,7 +46,6 @@ class QuestionController extends Controller
 
     public function update(Request $request)
     {
-
         $data = [
             'user_id' => $request->user_id,
             'title' => $request->title,
