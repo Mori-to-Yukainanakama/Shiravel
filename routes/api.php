@@ -24,11 +24,15 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'questions'], function () {
 
         // 質問全件取得api
-        Route::get('/', [QuestionController::class, 'getQuestions']);
+        Route::get('/', [QuestionController::class, 'getNewArrivalQuestions']);
         Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
         Route::post('/update', [QuestionController::class, 'update']);
         Route::get('/detail', [QuestionController::class, 'getQuestionDetail']);
+        Route::get('/unanswered', [QuestionController::class, 'getUnansweredQuestions']);
+        Route::get('/answered', [QuestionController::class, 'getAnsweredQuestions']);
+        Route::get('/unsolved', [QuestionController::class, 'getUnsolvedQuestions']);
+        Route::get('/solved', [QuestionController::class, 'getSolvedQuestions']);
     });
 });
 
@@ -44,12 +48,17 @@ Route::post('/questionComment/create', [QuestionCommentController::class, 'creat
 Route::delete('/questionComment/{id}', [QuestionCommentController::class, 'delete']);
 
 
+// /answerComments パスを共通化
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'answerComments'], function () {
 
-Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
-Route::delete('answerComment/{id}', [AnswerCommentController::class, 'delete']);
-Route::get('/answerComments', [AnswerCommentController::class, 'getAnswerComments']);
-Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerComment']);
-Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
-Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
+        Route::get('/', [AnswerCommentController::class, 'getAnswerComments']);
+        Route::get('/{id}', [AnswerCommentController::class, 'getAnswerComment']);
+        Route::post('/create', [AnswerCommentController::class, 'create']);
+        Route::post('/update/{id}', [AnswerCommentController::class, 'update']);
+        Route::delete('/{id}', [AnswerCommentController::class, 'delete']);
+    });
+});
+
 
 Route::post('/bestAnswer', [BestAnswerController::class, 'create']);

@@ -53,6 +53,56 @@ class QuestionController extends Controller
     }
 
     /**
+     * 質問一覧取得（新着順）
+     *
+     * @return Question
+     */
+    public function getNewArrivalQuestions()
+    {
+        return $this->question_service->getNewArrival();
+    }
+
+    /**
+     * 質問一覧取得（未回答）
+     *
+     * @return Question
+     */
+    public function getUnansweredQuestions()
+    {
+        return $this->question_service->getUnanswered();
+    }
+
+    /**
+     * 質問一覧取得（回答有）
+     *
+     * @return Question
+     */
+    public function getAnsweredQuestions()
+    {
+        return $this->question_service->getAnswered();
+    }
+
+    /**
+     * 質問一覧取得（未解決）
+     *
+     * @return Question
+     */
+    public function getUnsolvedQuestions()
+    {
+        return $this->question_service->getUnsolved();
+    }
+
+    /**
+     * 質問一覧取得（解決済）
+     *
+     * @return Question
+     */
+    public function getSolvedQuestions()
+    {
+        return $this->question_service->getSolved();
+    }
+
+    /**
      * 質問登録
      *
      * @param Request
@@ -76,7 +126,6 @@ class QuestionController extends Controller
      */
     public function update(Request $request)
     {
-
         $data = [
             'user_id' => $request->user_id,
             'title' => $request->title,

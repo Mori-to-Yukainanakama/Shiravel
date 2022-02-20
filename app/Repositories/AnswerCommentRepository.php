@@ -21,19 +21,19 @@ class AnswerCommentRepository implements RepositoryInterface
   }
 
   // テーブルのプライマリーキーで1件取得
-  public function getDataById($id)
+  public function getDataById($id) 
   {
-
-    // AnswerComment::findOrFail($id);の方に変更お願いします。
-    $answer_comment = new AnswerComment;
-    return $answer_comment->where('user_id', $id)->firstOrFail();
+    // firstOrfailの使い方が分からず上手くいかないので、一旦firstOrFail使用
+    // 挙動確認済み
+    return AnswerComment::where("user_id", "=", $id)->firstOrFail();
   }
 
   public function update($data)
   {
-    $answer_comment = new AnswerComment;
-    $answer_comment->where('user_id', 1)->update($data);
-  }
+    // findOrFailの使い方が分からず上手くいかないので,この書き方に変更
+    // できそうであれば修正
+    $answer_comment = AnswerComment::where("user_id", "=", $data["user_id"])->update($data);
+  }  
 
   // 削除
   public function delete($id)
