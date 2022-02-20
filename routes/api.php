@@ -38,12 +38,17 @@ Route::group(['prefix' => 'v1'], function () {
     });
 });
 
+// /answerComments パスを共通化
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'answerComments'], function () {
 
-Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
-Route::delete('answerComment/{id}', [AnswerCommentController::class, 'delete']);
-Route::get('/answerComments', [AnswerCommentController::class, 'getAnswerComments']);
-Route::get('/answerComment/{id}', [AnswerCommentController::class, 'getAnswerComment']);
-Route::post('/answerComment/create', [AnswerCommentController::class, 'create']);
-Route::post('/answerComment/update', [AnswerCommentController::class, 'update']);
+        Route::get('/', [AnswerCommentController::class, 'getAnswerComments']);
+        Route::get('/{id}', [AnswerCommentController::class, 'getAnswerComment']);
+        Route::post('/create', [AnswerCommentController::class, 'create']);
+        Route::post('/update/{id}', [AnswerCommentController::class, 'update']);
+        Route::delete('/{id}', [AnswerCommentController::class, 'delete']);
+    });
+});
+
 
 Route::post('/bestAnswer', [BestAnswerController::class, 'create']);
