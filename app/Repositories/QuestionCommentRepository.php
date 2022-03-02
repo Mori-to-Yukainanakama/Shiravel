@@ -2,29 +2,57 @@
 
 namespace App\Repositories;
 
-use App\Models\Models\QuestionComment;
+use App\Models\QuestionComment;
 
 // Repositoryのインターフェースを継承
 class QuestionCommentRepository implements RepositoryInterface
 {
 
-    // 全件取得
+    /**
+     * 質問コメント全取得
+     *
+     * @return string
+     */
     public function getAll()
     {
-
+        return QuestionComment::all();
     }
 
     // プライマリーキー（id）で1件取得
+    /**
+     * 質問コメント1件取得
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function getDataById($id)
     {
+        // QuestionComment::findOrFail($id);
+        return QuestionComment::where("user_id", "=", $id)->firstOrFail();
 
     }
 
-    // 質問登録
+    /**
+     * 質問コメント登録
+     *
+     * @param [array] $data
+     * @return void
+     */
     public function save($data)
     {
-        $question = new QuestionComment;
-        $question->fill($data)->save();
+        $question_comment = new QuestionComment;
+        $question_comment->fill($data)->save();
+    }
+
+    /**
+     * 質問コメント更新
+     *
+     * @param [array] $data
+     * @return void
+     */
+    public function update($data)
+    {
+        $question_comment = QuestionComment::where("user_id", "=", $data["user_id"])->update($data);
     }
 
     /**

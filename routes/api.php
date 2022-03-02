@@ -44,10 +44,6 @@ Route::group(['prefix' => 'v1'], function () {
     });
 });
 
-Route::post('/questionComment/create', [QuestionCommentController::class, 'create']);
-Route::delete('/questionComment/{id}', [QuestionCommentController::class, 'delete']);
-
-
 // /answerComments パスを共通化
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'answerComments'], function () {
@@ -57,6 +53,18 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/create', [AnswerCommentController::class, 'create']);
         Route::post('/update/{id}', [AnswerCommentController::class, 'update']);
         Route::delete('/{id}', [AnswerCommentController::class, 'delete']);
+    });
+});
+
+// questionComments パスを共通化
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'questionComments'], function () {
+
+        Route::get('/', [QuestionCommentController::class, 'getQuestionComments']);
+        Route::get('/{id}', [QuestionCommentController::class, 'getQuestionComment']);
+        Route::post('/create', [QuestionCommentController::class, 'create']);
+        Route::post('/update/{id}', [QuestionCommentController::class, 'update']);
+        Route::delete('/{id}', [QuestionCommentController::class, 'delete']);
     });
 });
 
