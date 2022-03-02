@@ -22,11 +22,15 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'questions'], function () {
 
         // 質問全件取得api
-        Route::get('/', [QuestionController::class, 'getQuestions']);
+        Route::get('/', [QuestionController::class, 'getNewArrivalQuestions']);
         Route::get('/question', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
         Route::post('/update', [QuestionController::class, 'update']);
         Route::get('/detail', [QuestionController::class, 'getQuestionDetail']);
+        Route::get('/unanswered', [QuestionController::class, 'getUnansweredQuestions']);
+        Route::get('/answered', [QuestionController::class, 'getAnsweredQuestions']);
+        Route::get('/unsolved', [QuestionController::class, 'getUnsolvedQuestions']);
+        Route::get('/solved', [QuestionController::class, 'getSolvedQuestions']);
     });
 });
 
@@ -47,9 +51,24 @@ Route::group(['prefix' => 'v1'], function () {
     });
 });
 
+<<<<<<< HEAD
 // /answer パスを共通化
 
 Route::group(['prefix' => 'answer'], function () {
+=======
+// /answerComments パスを共通化
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'answerComments'], function () {
+
+        Route::get('/', [AnswerCommentController::class, 'getAnswerComments']);
+        Route::get('/{id}', [AnswerCommentController::class, 'getAnswerComment']);
+        Route::post('/create', [AnswerCommentController::class, 'create']);
+        Route::post('/update/{id}', [AnswerCommentController::class, 'update']);
+        Route::delete('/{id}', [AnswerCommentController::class, 'delete']);
+    });
+});
+
+>>>>>>> 585bebfe41dd33190a73501ddc7ec712a566e8d7
 
     Route::get('/get/{id}', [AnswerController::class, 'getAnswer']);
     Route::post('/create', [AnswerController::class, 'createAnswer']);
