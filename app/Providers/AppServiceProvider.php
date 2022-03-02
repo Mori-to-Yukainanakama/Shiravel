@@ -39,7 +39,6 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             \App\Services\AnswerService::class,
-
         );
     }
 

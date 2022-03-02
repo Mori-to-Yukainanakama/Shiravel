@@ -5,11 +5,11 @@ namespace App\Repositories;
 use App\Models\Answer;
 
 // Repositoryのインターフェースを継承
-class AnswerRepository implements RepositoryInterface
+class AnswerRepository implements AnswerRepositoryInterface
 {
 
     // 質問に紐づく回答取得
-    public function getAll($question_id)
+    public function get($question_id)
     {
         $answers = Answer::where("question_id", "=" , $question_id)->get();
         return $answers;
@@ -23,9 +23,9 @@ class AnswerRepository implements RepositoryInterface
     }
     
     // 回答削除
-    public function delete($id)
+    public function delete($answer_id)
     {
-        Answer::find($id)->delete();
+        Answer::find($answer_id)->delete();
     }
 
     // 回答更新

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\AnswerInterface;
+use App\Services\AnswerSearvice;
 use App\Models\Answer;
 
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class AnswerController extends Controller
 
     /**
      * 回答取得
-     * @param Request
+     * @param [int] $id
      * @return Answer
      */
     public function getAnswer($question_id)
@@ -54,12 +54,12 @@ class AnswerController extends Controller
     
     /**
      * 回答削除
-     * @param Request
+     * @param [int] $id
      * @return void
      */
-    public function deleteAnswer($id)
+    public function deleteAnswer($answer_id)
     {
-        $this->answer_service->delete($id);
+        $this->answer_service->delete($answer_id);
     }
 
 }
