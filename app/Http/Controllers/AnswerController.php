@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\AnswerSearvice;
-use App\Models\Answer;
+use App\Services\AnswerService;
 
 use Illuminate\Http\Request;
 
@@ -16,50 +15,29 @@ class AnswerController extends Controller
         $this->answer_service = $answer_service;
     }
 
-    /**
-     * 回答取得
-     * @param [int] $id
-     * @return Answer
-     */
-    public function getAnswer($question_id)
+    // 回答登録
+    public function createAnswer($data)
     {
-        $answer = $this->answer_service->getAll($question_id);
+        $this->answer_service->save($data);
+    }
+
+    // 回答更新
+    public function updateAnswer(Request $request)
+    {
+        $id = $request->id;
+        $answer = $this->answer_service->update($id);
+
         return $answer;
     }
 
-    /**
-     * 回答登録
-     * @param Request
-     * @return void
-     */
-    public function createAnswer(Request $request)
-    {
-        $this->answer_service->save($request->all());
-    }
-
-    /**
-     * 回答更新
-     * @param Request
-     * @return void
-     */
-    public function updateAnswer(Request $request)
-    {
-        $data = [
-            'answer_id' => $request->answer_id,
-            'content' => $request->content,
-        ];
-        $answer = $this->answer_service->update($data);
-
-    }
-    
     /**
      * 回答削除
      * @param [int] $id
      * @return void
      */
-    public function deleteAnswer($answer_id)
+    public function deleteAnswer($id)
     {
-        $this->answer_service->delete($answer_id);
+        return $this->answer_service->delete($id);
     }
 
 }

@@ -21,7 +21,7 @@ class AnswerRepository implements AnswerRepositoryInterface
         $answer = new Answer();
         $answer->fill($data)->save();
     }
-    
+
     // 回答削除
     public function delete($answer_id)
     {
@@ -31,7 +31,7 @@ class AnswerRepository implements AnswerRepositoryInterface
     // 回答更新
     public function update($data)
     {
-        $answer = Answer::findOrFail($id["answer_id"]);        
+        $answer = Answer::findOrFail($data["answer_id"]);
         $answer->updata($data);
     }
 }

@@ -51,11 +51,7 @@ Route::group(['prefix' => 'v1'], function () {
     });
 });
 
-<<<<<<< HEAD
-// /answer パスを共通化
 
-Route::group(['prefix' => 'answer'], function () {
-=======
 // /answerComments パスを共通化
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'answerComments'], function () {
@@ -68,8 +64,9 @@ Route::group(['prefix' => 'v1'], function () {
     });
 });
 
->>>>>>> 585bebfe41dd33190a73501ddc7ec712a566e8d7
+// /answer パスを共通化
 
+Route::group(['prefix' => 'answer'], function () {
     Route::get('/get/{id}', [AnswerController::class, 'getAnswer']);
     Route::post('/create', [AnswerController::class, 'createAnswer']);
     Route::delete('/delete/{id}', [AnswerController::class, 'deleteAnswer']);

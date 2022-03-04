@@ -2,16 +2,15 @@
 
 namespace App\Services;
 
-use App\Repositories\RepositoryInterface;
+use App\Repositories\AnswerRepository;
 
 class AnswerService
 {
     private AnswerRepository $answer_repository;
 
     // インスタンス生成
-    public function __construct(
-        AnswerRepositoryInterface $answer_repository
-    ) {
+    public function __construct(AnswerRepository $answer_repository)
+    {
         $this->answer_repository = $answer_repository;
     }
 
