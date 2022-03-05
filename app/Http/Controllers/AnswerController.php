@@ -25,7 +25,13 @@ class AnswerController extends Controller
     // 回答登録
     public function createAnswer(Request $request)
     {
-        $this->answer_service->save($request);
+        $data = [
+            'user_id' => $request->user_id,
+            'answer_id' => $request->answer_id,
+            'content' => $request->content,
+        ];
+        $this->answer_comment_service->save($data);
+
     }
 
     // 回答削除
