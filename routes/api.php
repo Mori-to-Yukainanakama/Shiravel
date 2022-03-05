@@ -65,9 +65,9 @@ Route::group(['prefix' => 'v1'], function () {
 
     // /answer パスを共通化
     Route::group(['prefix' => 'answer'], function () {
-        Route::get('/get/{question_id}', [AnswerController::class, 'getAnswer']);
+        Route::get('/{question_id}', [AnswerController::class, 'getAnswer']);
         Route::post('/create', [AnswerController::class, 'createAnswer']);
-        Route::delete('/delete/{answer_id}', [AnswerController::class, 'deleteAnswer']);
+        Route::delete('/{answer_id}', [AnswerController::class, 'deleteAnswer']);
         Route::post('/update', [AnswerController::class, 'updateAnswer']);
     });
 });
