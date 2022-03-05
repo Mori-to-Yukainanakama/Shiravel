@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     // UserServiceのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
-    private $user_service;
+    private UserService $user_service;
 
     public function __construct(UserService $user_service)
     {

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class QuestionRequest extends FormRequest
 {
@@ -13,7 +15,14 @@ class QuestionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // trueにしたらフォームリクエストの利用が許可される
+        return true;
+        // 以下のようにすれば、パスごとに適用できる
+        // if ($this->path() == 'sample') {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
 
     /**
@@ -24,19 +33,29 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'msg' => 'required',
-            'name' => 'required',
-            'age' => 'numeric',
+            'user_id' => 'required|numeric',
+            'title' => 'required',
+            'content' => 'required',
+            'is_solved' => 'boolean',
+            'is_answered' => 'booloean',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => '名前は必ず入力してください',
-            'msg.required' => 'メッセージは必ず入力してください',
-            'age.numeric' => '年齢は数字で入力してください',
-            'age.hello' => 'Heloo!!入力は偶数のみ受け付けます。'
+            'title.required' => 'タイトルは必ず入力してください',
+            'content.required' => '質問内容は必ず入力してください',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $data = [
+            'message' => __('The given data was invalid.'),
+            'errors' => $validator->errors()->toArray(),
+        ];
+
+        throw new HttpResponseException(response()->json($data, 422));
     }
 }
