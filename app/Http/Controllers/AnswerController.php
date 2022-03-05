@@ -43,6 +43,10 @@ class AnswerController extends Controller
     // 回答更新
     public function updateAnswer(Request $request)
     {
-        $this->answer_service->update($request);
+        $data = [
+            'answer_id' => $request->answer_id,
+            'content' => $request->content,
+        ];
+        $this->answer_service->update($data);
     }
 }
