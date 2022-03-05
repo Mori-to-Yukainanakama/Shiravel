@@ -19,10 +19,10 @@ use App\Http\Controllers\BestAnswerController;
 |
 */
 
-// /questions パスを共通化
+// APIバージョン１
 Route::group(['prefix' => 'v1'], function () {
+    // /questions パスを共通化
     Route::group(['prefix' => 'questions'], function () {
-
         // 質問全件取得api
         Route::get('/', [QuestionController::class, 'getNewArrivalQuestions']);
         Route::get('/unanswered', [QuestionController::class, 'getUnansweredQuestions']);
@@ -35,19 +35,13 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/{id}', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
     });
-});
-
-// /users パスを共通化
-Route::group(['prefix' => 'v1'], function () {
+    // /users パスを共通化
     Route::group(['prefix' => 'users'], function () {
 
         Route::get('/', [UserController::class, 'getUsers']);
         Route::get('/unsolved', [QuestionController::class, 'getUnsolvedQuestions']);
     });
-});
-
-// /answerComments パスを共通化
-Route::group(['prefix' => 'v1'], function () {
+    // /answerComments パスを共通化
     Route::group(['prefix' => 'answerComments'], function () {
 
         Route::get('/', [AnswerCommentController::class, 'getAnswerComments']);
@@ -56,10 +50,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/update/{id}', [AnswerCommentController::class, 'update']);
         Route::delete('/{id}', [AnswerCommentController::class, 'delete']);
     });
-});
-
-// questionComments パスを共通化
-Route::group(['prefix' => 'v1'], function () {
+    // questionComments パスを共通化
     Route::group(['prefix' => 'questionComments'], function () {
 
         Route::get('/', [QuestionCommentController::class, 'getQuestionComments']);
@@ -68,7 +59,8 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/update/{id}', [QuestionCommentController::class, 'update']);
         Route::delete('/{id}', [QuestionCommentController::class, 'delete']);
     });
+    // bestAnswers パスを共通化
+    Route::group(['prefix' => 'bestAnswer'], function () {
+        Route::post('/', [BestAnswerController::class, 'create']);
+    });
 });
-
-
-Route::post('/bestAnswer', [BestAnswerController::class, 'create']);
