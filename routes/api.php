@@ -7,6 +7,7 @@ use App\Http\Controllers\QuestionCommentController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AnswerCommentController;
 use App\Http\Controllers\BestAnswerController;
+use App\Http\Controllers\AnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,13 +36,13 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/{id}', [QuestionController::class, 'getQuestion']);
         Route::delete('/{id}', [QuestionController::class, 'delete']);
     });
+
     // /users パスを共通化
     Route::group(['prefix' => 'users'], function () {
-
         Route::get('/', [UserController::class, 'getUsers']);
         Route::get('/unsolved', [QuestionController::class, 'getUnsolvedQuestions']);
     });
-    // /answerComments パスを共通化
+
     Route::group(['prefix' => 'answerComments'], function () {
 
         Route::get('/', [AnswerCommentController::class, 'getAnswerComments']);
@@ -63,4 +64,15 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'bestAnswer'], function () {
         Route::post('/', [BestAnswerController::class, 'create']);
     });
+
+    // /answer パスを共通化
+    Route::group(['prefix' => 'answer'], function () {
+        Route::get('/{question_id}', [AnswerController::class, 'getAnswer']);
+        Route::post('/create', [AnswerController::class, 'createAnswer']);
+        Route::delete('/{answer_id}', [AnswerController::class, 'deleteAnswer']);
+        Route::post('/update', [AnswerController::class, 'updateAnswer']);
+    });
 });
+
+
+
