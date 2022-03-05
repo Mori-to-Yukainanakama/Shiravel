@@ -6,7 +6,7 @@ use App\Repositories\AnswerRepository;
 
 class AnswerService
 {
-    private AnswerRepository $answer_repository;
+    private $answer_repository;
 
     // インスタンス生成
     public function __construct(AnswerRepository $answer_repository)

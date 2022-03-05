@@ -11,7 +11,7 @@ class AnswerRepository implements AnswerRepositoryInterface
     // 質問に紐づく回答取得
     public function get($question_id)
     {
-        $answers = Answer::where("question_id", "=" , $question_id)->get();
+        $answers = Answer::where("question_id", "=" , $question_id)->get("content");
         return $answers;
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\QuestionCommentController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AnswerCommentController;
 use App\Http\Controllers\BestAnswerController;
+use App\Http\Controllers\AnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,8 +82,9 @@ Route::group(['prefix' => 'v1'], function () {
 // /answer パスを共通化
 
 Route::group(['prefix' => 'answer'], function () {
-    Route::get('/get/{id}', [AnswerController::class, 'getAnswer']);
+    Route::get('/get/{question_id}', [AnswerController::class, 'getAnswer']);
     Route::post('/create', [AnswerController::class, 'createAnswer']);
-    Route::delete('/delete/{id}', [AnswerController::class, 'deleteAnswer']);
+    Route::delete('/delete/{answer_id}', [AnswerController::class, 'deleteAnswer']);
     Route::post('/update', [AnswerController::class, 'updateAnswer']);
 });
+
