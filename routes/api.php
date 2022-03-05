@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuestionCommentController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AnswerCommentController;
 use App\Http\Controllers\BestAnswerController;
 
@@ -61,6 +63,18 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/create', [AnswerCommentController::class, 'create']);
         Route::post('/update/{id}', [AnswerCommentController::class, 'update']);
         Route::delete('/{id}', [AnswerCommentController::class, 'delete']);
+    });
+});
+
+// questionComments パスを共通化
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'questionComments'], function () {
+
+        Route::get('/', [QuestionCommentController::class, 'getQuestionComments']);
+        Route::get('/{id}', [QuestionCommentController::class, 'getQuestionComment']);
+        Route::post('/create', [QuestionCommentController::class, 'create']);
+        Route::post('/update/{id}', [QuestionCommentController::class, 'update']);
+        Route::delete('/{id}', [QuestionCommentController::class, 'delete']);
     });
 });
 
