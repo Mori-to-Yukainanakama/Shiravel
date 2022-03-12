@@ -37,24 +37,18 @@ class AnswerCommentRequest extends FormRequest
         return [
             // 数字かどうか
             'user_id' => 'required|numeric',
-            'answer_id'　,
-            'content' => 'required|max:16384',
+            'answer_id' => 'required|numeric',
+            'content' => 'required|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            // タイトルがない時のエラーメッセージ
-            'title.required' => 'タイトルは必ず入力してください',
+            // 回答内容がない時のエラーメッセージ
+            'content.required' => '回答内容は必ず入力してください',
 
-            // タイトルの文字数が多い時のエラーメッセージ
-            'title.max' => 'タイトルが長すぎます。30文字以内で投稿してください',
-
-            // 質問内容がない時のエラーメッセージ
-            'content.required' => '質問内容は必ず入力してください',
-
-            'content.max' => '質問内容が長すぎます。16384文字以内で投稿してください',
+            'content.max' => '回答内容が長すぎます。255文字以内で投稿してください',
         ];
     }
 
