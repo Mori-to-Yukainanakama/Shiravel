@@ -26,13 +26,12 @@ class QuestionCommentController extends Controller
     }
 
     /**
-   * 質問コメント1件取得
-   *
-   * @return string
-   */
-    public function getQuestionComment()
+     * 質問コメント1件取得
+     *
+     * @return string
+     */
+    public function getQuestionComment($id)
     {
-        $id = 1;
         $question_comment = $this->question_comment_service->getDataById($id);
         return $question_comment;
     }
@@ -62,8 +61,8 @@ class QuestionCommentController extends Controller
     public function update(Request $request)
     {
         $data = [
-        'user_id' => $request->user_id,
-        'content' => $request->content,
+            'user_id' => $request->user_id,
+            'content' => $request->content,
         ];
         $this->question_comment_service->update($data);
     }
