@@ -35,7 +35,10 @@ class AnswerCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 数字かどうか
+            'user_id' => 'required|numeric',
+            'answer_id'　,
+            'content' => 'required|max:16384',
         ];
     }
 
