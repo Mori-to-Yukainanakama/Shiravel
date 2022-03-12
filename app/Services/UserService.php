@@ -10,9 +10,9 @@ class UserService
 {
 
     // UserRepositoryのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
-    private RepositoryInterface $user_repository;
+    private UserRepository $user_repository;
 
-    public function __construct(RepositoryInterface $user_repository)
+    public function __construct(UserRepository $user_repository)
     {
         $this->user_repository = $user_repository;
     }

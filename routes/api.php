@@ -26,19 +26,21 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'questions'], function () {
         // 質問全件取得api
         Route::get('/', [QuestionController::class, 'getNewArrivalQuestions']);
-        Route::get('/question', [QuestionController::class, 'getQuestion']);
-        Route::delete('/{id}', [QuestionController::class, 'delete']);
-        Route::post('/update', [QuestionController::class, 'update']);
-        Route::get('/detail', [QuestionController::class, 'getQuestionDetail']);
         Route::get('/unanswered', [QuestionController::class, 'getUnansweredQuestions']);
         Route::get('/answered', [QuestionController::class, 'getAnsweredQuestions']);
         Route::get('/unsolved', [QuestionController::class, 'getUnsolvedQuestions']);
         Route::get('/solved', [QuestionController::class, 'getSolvedQuestions']);
+        Route::post('/update', [QuestionController::class, 'update']);
+        Route::get('/detail', [QuestionController::class, 'getQuestionDetail']);
+        Route::post('/create', [QuestionController::class, 'create']);
+        Route::get('/{id}', [QuestionController::class, 'getQuestion']);
+        Route::delete('/{id}', [QuestionController::class, 'delete']);
     });
 
     // /users パスを共通化
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'getUsers']);
+        Route::get('/unsolved', [QuestionController::class, 'getUnsolvedQuestions']);
     });
 
     Route::group(['prefix' => 'answerComments'], function () {

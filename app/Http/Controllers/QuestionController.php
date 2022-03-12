@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuestionRequest;
 use App\Services\QuestionService;
 use App\Models\Question;
 use App\Models\User;
@@ -25,9 +26,9 @@ class QuestionController extends Controller
      * @param [int] $id
      * @return Question
      */
-    public function getQuestion(Request $request)
+    public function getQuestion($id)
     {
-        return $this->question_service->getDataById($request->question_id);
+        return $this->question_service->getDataById($id);
     }
 
     /**
@@ -108,13 +109,14 @@ class QuestionController extends Controller
      * @param Request
      * @return void
      */
-    public function create(Request $request)
+    public function create(QuestionRequest $request)
     {
         $data = [
             'user_id' => $request->user_id,
             'title' => $request->title,
             'content' => $request->content,
         ];
+
         $this->question_service->create($data);
     }
 
