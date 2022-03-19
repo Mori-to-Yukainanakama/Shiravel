@@ -62,7 +62,7 @@ Route::group(['prefix' => 'v1'], function () {
     });
     // bestAnswers パスを共通化
     Route::group(['prefix' => 'bestAnswer'], function () {
-        Route::post('/', [BestAnswerController::class, 'create']);
+        Route::post('/', [BestAnswerController::class, 'create'])->middleware('bestAnswerCheck');
     });
 
     // /answer パスを共通化
@@ -73,6 +73,3 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/update', [AnswerController::class, 'updateAnswer']);
     });
 });
-
-
-

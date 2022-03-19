@@ -31,9 +31,9 @@ class BestAnswerRequest extends FormRequest
             'question_id' => 'required|numeric',
 
             // 回答ID, 回答コメントID, 質問コメントIDは必須項目ではない(NULLを許可)
-            'answer_id' => 'numeric|nullable',
-            'answer_comment_id' => 'numeric|nullable',
-            'question_comment_id' => 'numeric|nullable',
+            'answer_id' => 'nullable|numeric',
+            'answer_comment_id' => 'nullable|numeric',
+            'question_comment_id' => 'nullable|numeric',
         ];
     }
 
