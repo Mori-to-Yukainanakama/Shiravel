@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuestionRequest;
 use App\Services\QuestionService;
 use App\Models\Question;
-use App\Models\User;
-use App\Services\BestAnswerService;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-
     // QuestionServiceのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
     private QuestionService $question_service;
 
+    /**
+     * コンストラクタ
+     *
+     * @param QuestionService
+     * @return void
+     */
     public function __construct(QuestionService $question_service)
     {
         $this->question_service = $question_service;
@@ -37,15 +40,14 @@ class QuestionController extends Controller
      * @param [int] $id
      * @return Question
      */
-    public function getQuestionDetail(Request $request)
+    public function getQuestionDetail($id)
     {
-        return $this->question_service->getQuestionDetail($request->question_id);
+        return $this->question_service->getQuestionDetail($id);
     }
 
     /**
      * 質問全件取得
      *
-     * @param
      * @return Question
      */
     public function getQuestions()
@@ -106,7 +108,7 @@ class QuestionController extends Controller
     /**
      * 質問登録
      *
-     * @param Request
+     * @param QuestionRequest
      * @return void
      */
     public function create(QuestionRequest $request)
@@ -123,10 +125,10 @@ class QuestionController extends Controller
     /**
      * 質問更新
      *
-     * @param Request
+     * @param QuestionRequest
      * @return void
      */
-    public function update(Request $request)
+    public function update(QuestionRequest $request)
     {
         $data = [
             'user_id' => $request->user_id,
@@ -134,8 +136,7 @@ class QuestionController extends Controller
             'content' => $request->content,
         ];
 
-        // TODO API疎通確認のため削除
-        return $this->question_service->update($data);
+        $this->question_service->update($data);
     }
 
     /**
@@ -145,8 +146,6 @@ class QuestionController extends Controller
      */
     public function delete($id)
     {
-        // $this->question_service->delete($id);
-        // TODO API疎通確認用のため削除
-        return $this->question_service->delete($id);
+        $this->question_service->delete($id);
     }
 }

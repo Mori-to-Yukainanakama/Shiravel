@@ -9,6 +9,11 @@ class QuestionCommentController extends Controller
 {
     private QuestionCommentService $question_comment_service;
 
+    /**
+     * コンストラクタ
+     *
+     * @param QuestionCommentService
+     */
     public function __construct(QuestionCommentService $question_comment_service)
     {
         $this->question_comment_service = $question_comment_service;
@@ -21,8 +26,7 @@ class QuestionCommentController extends Controller
      */
     public function getQuestionComments()
     {
-        $question_comments = $this->question_comment_service->getAll();
-        return $question_comments;
+        return $question_comments = $this->question_comment_service->getAll();
     }
 
     /**
@@ -32,14 +36,13 @@ class QuestionCommentController extends Controller
      */
     public function getQuestionComment($id)
     {
-        $question_comment = $this->question_comment_service->getDataById($id);
-        return $question_comment;
+        return $question_comment = $this->question_comment_service->getDataById($id);
     }
 
     /**
      * 質問コメント登録
      *
-     * @param Request $request
+     * @param Request
      * @return void
      */
     public function create(Request $request)
@@ -74,6 +77,6 @@ class QuestionCommentController extends Controller
      */
     public function delete($id)
     {
-        return $this->question_comment_service->delete($id);
+        $this->question_comment_service->delete($id);
     }
 }

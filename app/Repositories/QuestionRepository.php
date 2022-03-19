@@ -68,28 +68,47 @@ class QuestionRepository implements RepositoryInterface
         return Question::where('is_solved', true)->with('user')->get();
     }
 
-    // プライマリーキー（id）で1件取得
+    /**
+     * 質問1件取得(id検索)
+     *
+     * @param [int] $id
+     * @return Question
+     */
     public function getDataById($id)
     {
         return Question::findOrFail($id);
     }
 
-    // 質問登録
+    /**
+     * 質問登録
+     *
+     * @param $data
+     * @return void
+     */
     public function save($data)
     {
         $question = new Question;
         $question->fill($data)->save();
     }
 
-
-    // 質問更新
+    /**
+     * 質問更新
+     *
+     * @param data
+     * @return void
+     */
     public function update($data)
     {
         $question = Question::findOrFail($data['user_id']);
         $question->update($data);
     }
 
-    // 質問詳細取得
+    /**
+     * 質問詳細取得
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function getQuestionDetail($id)
     {
         // 質問のベストアンサーを取得
