@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuestionRequest;
 use App\Services\QuestionService;
 use App\Models\Question;
-use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
@@ -113,12 +112,12 @@ class QuestionController extends Controller
      */
     public function create(QuestionRequest $request)
     {
+        // user_idはAUTHから取得するようにする
         $data = [
             'user_id' => $request->user_id,
             'title' => $request->title,
             'content' => $request->content,
         ];
-
         $this->question_service->create($data);
     }
 
@@ -130,12 +129,12 @@ class QuestionController extends Controller
      */
     public function update(QuestionRequest $request)
     {
+        // user_idはAUTHから取得するようにする
         $data = [
             'user_id' => $request->user_id,
             'title' => $request->title,
             'content' => $request->content,
         ];
-
         $this->question_service->update($data);
     }
 

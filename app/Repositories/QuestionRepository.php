@@ -104,6 +104,21 @@ class QuestionRepository implements RepositoryInterface
     }
 
     /**
+     * 質問更新
+     * 解決済みに更新
+     *
+     * @param data
+     * @return void
+     */
+    public function isSolevedUpdate($questionId)
+    {
+        // 「解決フラグ（is_soleved）」をtrueにして解決済みにする
+        $data = ['is_solved' => true];
+        $question = Question::findOrFail($questionId);
+        $question->update($data);
+    }
+
+    /**
      * 質問詳細取得
      *
      * @param [int] $id

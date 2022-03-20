@@ -3,6 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\BestAnswer;
+use Illuminate\Support\Facades\DB;
+use App\Models\Question;
+use Throwable;
 
 class BestAnswerRepository
 {
