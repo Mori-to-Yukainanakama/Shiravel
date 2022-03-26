@@ -14,22 +14,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        // usersテーブル指定
-        $this->call(UsersTableSeeder::class);
+        // // usersテーブル指定
+        // $this->call(UsersTableSeeder::class);
 
         // questionテーブル指定
         $this->call(QuestionsTableSeeder::class);
 
-        // answersテーブル指定
-        $this->call(AnswersTableSeeder::class);
+        // // answersテーブル指定
+        // $this->call(AnswersTableSeeder::class);
 
-        // question_commentsテーブル指定
-        $this->call(QuestionCommentsTableSeeder::class);
+        // // question_commentsテーブル指定
+        // $this->call(QuestionCommentsTableSeeder::class);
 
-        // answer_commentsテーブル指定
-        $this->call(AnswerCommentsTableSeeder::class);
+        // // answer_commentsテーブル指定
+        // $this->call(AnswerCommentsTableSeeder::class);
 
-        // best_answersテーブル指定
-        $this->call(BestAnswersTableSeeder::class);
+        // // best_answersテーブル指定
+        // $this->call(BestAnswersTableSeeder::class);
     }
 }
