@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuestionRequest;
 use App\Services\QuestionService;
 use App\Models\Question;
-use App\Models\User;
-use App\Services\BestAnswerService;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-
     // QuestionServiceのインスタンス生成は「AppServiceProvider.php」のbuild関数でしてる
     private QuestionService $question_service;
 
+    /**
+     * コンストラクタ
+     *
+     * @param QuestionService
+     * @return void
+     */
     public function __construct(QuestionService $question_service)
     {
         $this->question_service = $question_service;
@@ -45,7 +48,6 @@ class QuestionController extends Controller
     /**
      * 質問全件取得
      *
-     * @param
      * @return Question
      */
     public function getQuestions()
@@ -106,36 +108,35 @@ class QuestionController extends Controller
     /**
      * 質問登録
      *
-     * @param Request
+     * @param QuestionRequest
      * @return void
      */
     public function create(QuestionRequest $request)
     {
+        // user_idはAUTHから取得するようにする
         $data = [
             'user_id' => $request->user_id,
             'title' => $request->title,
             'content' => $request->content,
         ];
-
         $this->question_service->create($data);
     }
 
     /**
      * 質問更新
      *
-     * @param Request
+     * @param QuestionRequest
      * @return void
      */
-    public function update(Request $request)
+    public function update(QuestionRequest $request)
     {
+        // user_idはAUTHから取得するようにする
         $data = [
             'user_id' => $request->user_id,
             'title' => $request->title,
             'content' => $request->content,
         ];
-
-        // TODO API疎通確認のため削除
-        return $this->question_service->update($data);
+        $this->question_service->update($data);
     }
 
     /**
@@ -145,8 +146,6 @@ class QuestionController extends Controller
      */
     public function delete($id)
     {
-        // $this->question_service->delete($id);
-        // TODO API疎通確認用のため削除
-        return $this->question_service->delete($id);
+        $this->question_service->delete($id);
     }
 }

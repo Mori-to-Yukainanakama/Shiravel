@@ -68,28 +68,89 @@ class QuestionRepository implements RepositoryInterface
         return Question::where('is_solved', true)->with('user')->get();
     }
 
-    // プライマリーキー（id）で1件取得
+    /**
+     * 質問1件取得(id検索)
+     *
+     * @param [int] $id
+     * @return Question
+     */
     public function getDataById($id)
     {
         return Question::findOrFail($id);
     }
 
-    // 質問登録
+    /**
+     * 質問登録
+     *
+     * @param $data
+     * @return void
+     */
     public function save($data)
     {
         $question = new Question;
         $question->fill($data)->save();
     }
 
-
-    // 質問更新
+    /**
+     * 質問更新
+     *
+     * @param data
+     * @return void
+     */
     public function update($data)
     {
         $question = Question::findOrFail($data['user_id']);
         $question->update($data);
     }
 
-    // 質問詳細取得
+    /**
+     * 質問更新
+     * 解決済みに更新
+     *
+     * @param data
+     * @return void
+     */
+    public function isSolevedUpdate($question)
+    {
+        // 「解決フラグ（is_soleved）」をtrueにして解決済みにする
+        $data = ['is_solved' => true];
+        $question->update($data);
+    }
+
+    /**
+     * 質問更新
+     * 回答有りに更新
+     *
+     * @param data
+     * @return void
+     */
+    public function isAnsweredTrueUpdate($question)
+    {
+        // 「解決フラグ（is_answered）」をtrueにして回答有りにする
+        $data = ['is_answered' => true];
+        $question->update($data);
+    }
+
+    /**
+     * 質問更新
+     * 回答無しに更新
+     *
+     * @param data
+     * @return void
+     */
+    public function isAnsweredFalseUpdate($question)
+    {
+        // 「解決フラグ（is_answered）」をfalseにして回答無しにする
+        $data = ['is_answered' => false];
+        $question->update($data);
+    }
+
+    /**
+     * 質問詳細取得
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function getQuestionDetail($id)
     {
         // 質問のベストアンサーを取得
@@ -100,7 +161,7 @@ class QuestionRepository implements RepositoryInterface
             return $question = Question::with('user')->with('answers.user')->with('answers.answerComments.user')->with('questionComments.user')->find($id);
         }
 
-        // 何がベストアンサーになったか判定
+        // ベストアンサーになったテーブルを判定
         // 回答がベストアンサーの場合
         if ($bestAnswer->answer_id != null) {
             return $question = Question::with('user')->with('answers.user')->with('answers.answerComments.user')->with('questionComments.user')->with('bestAnswer.answer.user')->find($id);
@@ -113,6 +174,17 @@ class QuestionRepository implements RepositoryInterface
         } else if ($bestAnswer->question_comment_id != null) {
             return $question = Question::with('user')->with('answers.user')->with('answers.answerComments.user')->with('questionComments.user')->with('bestAnswer.questionComment.user')->find($id);
         }
+    }
+
+    /**
+     * 質問に結びついている回答を取得
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function getAnswers($id)
+    {
+        return Question::with('answers')->find($id);
     }
 
     /**

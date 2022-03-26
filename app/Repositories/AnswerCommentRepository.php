@@ -21,7 +21,7 @@ class AnswerCommentRepository implements RepositoryInterface
   }
 
   // テーブルのプライマリーキーで1件取得
-  public function getDataById($id) 
+  public function getDataById($id)
   {
     // firstOrfailの使い方が分からず上手くいかないので、一旦firstOrFail使用
     // 挙動確認済み
@@ -33,7 +33,7 @@ class AnswerCommentRepository implements RepositoryInterface
     // findOrFailの使い方が分からず上手くいかないので,この書き方に変更
     // できそうであれば修正
     $answer_comment = AnswerComment::where("user_id", "=", $data["user_id"])->update($data);
-  }  
+  }
 
   // 削除
   public function delete($id)

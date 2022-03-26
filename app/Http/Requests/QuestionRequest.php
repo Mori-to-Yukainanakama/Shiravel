@@ -27,7 +27,7 @@ class QuestionRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * 質問のバリデーションルール
      *
      * @return array
      */
@@ -51,6 +51,11 @@ class QuestionRequest extends FormRequest
         ];
     }
 
+    /**
+     * バリデーションエラー時のメッセージ
+     *
+     * @return void
+     */
     public function messages()
     {
         return [
