@@ -29,7 +29,6 @@ class QuestionCommentRepository implements RepositoryInterface
     {
         // QuestionComment::findOrFail($id);
         return QuestionComment::where("user_id", "=", $id)->firstOrFail();
-
     }
 
     /**
@@ -52,7 +51,7 @@ class QuestionCommentRepository implements RepositoryInterface
      */
     public function update($data)
     {
-        $question_comment = QuestionComment::where("user_id", "=", $data["user_id"])->update($data);
+        return QuestionComment::where("user_id", "=", $data["user_id"])->update($data);
     }
 
     /**
