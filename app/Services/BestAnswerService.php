@@ -38,12 +38,17 @@ class BestAnswerService
             $this->best_answer_repository->save($data);
 
             // ベストアンサーを登録した質問を取得
-            $this->question_repository->isSolevedUpdate($data['question_id']);
+            $question = $this->question_repository->getDataById($data['question_id']);
+
+            // ベストアンサーを登録した質問を解決済みに変更
+            $this->question_repository->isSolevedUpdate($question);
 
             // 処理が正常終了した場合、DBに保存
             DB::commit();
         } catch (Throwable $e) {
+
             // 処理途中にエラーが発生したら、全ての更新を元に戻す
+            // ログの出力をするようにしないといけない
             DB::rollBack();
         }
     }

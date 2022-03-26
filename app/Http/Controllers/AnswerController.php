@@ -27,17 +27,16 @@ class AnswerController extends Controller
     {
         $data = [
             'user_id' => $request->user_id,
-            'answer_id' => $request->answer_id,
+            'question_id' => $request->question_id,
             'content' => $request->content,
         ];
-        $this->answer_comment_service->save($data);
-
+        $this->answer_service->save($data);
     }
 
     // 回答削除
-    public function deleteAnswer($id)
+    public function deleteAnswer(Request $request)
     {
-        $this->answer_service->delete($id);
+        $this->answer_service->delete($request);
     }
 
     // 回答更新

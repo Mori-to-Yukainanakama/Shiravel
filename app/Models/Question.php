@@ -56,4 +56,28 @@ class Question extends Model
         $date = date('Y/m/d', strtotime($this->attributes['created_at']));
         return $this->attributes['created_at'] = $date;
     }
+
+    /**
+     * 回答フラグを文字列に変更するアクセサ
+     */
+    public function getIsAnsweredAttribute()
+    {
+        if ($this->attributes['is_answered'] == true) {
+            return $this->attributes['is_answered'] = "回答有";
+        }
+
+        return $this->attributes['is_answered'] = "回答無";
+    }
+
+    /**
+     * 解決フラグを文字列に変更するアクセサ
+     */
+    public function getIsSolvedAttribute()
+    {
+        if ($this->attributes['is_solved'] == true) {
+            return $this->attributes['is_solved'] = "解決済";
+        }
+
+        return $this->attributes['is_solved'] = "未解決";
+    }
 }

@@ -3,9 +3,11 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
 
 class QuestionTest extends TestCase
 {
+
     /**
      * 質問全件取得
      *

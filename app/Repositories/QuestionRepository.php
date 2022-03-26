@@ -110,11 +110,38 @@ class QuestionRepository implements RepositoryInterface
      * @param data
      * @return void
      */
-    public function isSolevedUpdate($questionId)
+    public function isSolevedUpdate($question)
     {
         // 「解決フラグ（is_soleved）」をtrueにして解決済みにする
         $data = ['is_solved' => true];
-        $question = Question::findOrFail($questionId);
+        $question->update($data);
+    }
+
+    /**
+     * 質問更新
+     * 回答有りに更新
+     *
+     * @param data
+     * @return void
+     */
+    public function isAnsweredTrueUpdate($question)
+    {
+        // 「解決フラグ（is_answered）」をtrueにして回答有りにする
+        $data = ['is_answered' => true];
+        $question->update($data);
+    }
+
+    /**
+     * 質問更新
+     * 回答無しに更新
+     *
+     * @param data
+     * @return void
+     */
+    public function isAnsweredFalseUpdate($question)
+    {
+        // 「解決フラグ（is_answered）」をfalseにして回答無しにする
+        $data = ['is_answered' => false];
         $question->update($data);
     }
 
@@ -134,7 +161,7 @@ class QuestionRepository implements RepositoryInterface
             return $question = Question::with('user')->with('answers.user')->with('answers.answerComments.user')->with('questionComments.user')->find($id);
         }
 
-        // 何がベストアンサーになったか判定
+        // ベストアンサーになったテーブルを判定
         // 回答がベストアンサーの場合
         if ($bestAnswer->answer_id != null) {
             return $question = Question::with('user')->with('answers.user')->with('answers.answerComments.user')->with('questionComments.user')->with('bestAnswer.answer.user')->find($id);
@@ -147,6 +174,17 @@ class QuestionRepository implements RepositoryInterface
         } else if ($bestAnswer->question_comment_id != null) {
             return $question = Question::with('user')->with('answers.user')->with('answers.answerComments.user')->with('questionComments.user')->with('bestAnswer.questionComment.user')->find($id);
         }
+    }
+
+    /**
+     * 質問に結びついている回答を取得
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function getAnswers($id)
+    {
+        return Question::with('answers')->find($id);
     }
 
     /**

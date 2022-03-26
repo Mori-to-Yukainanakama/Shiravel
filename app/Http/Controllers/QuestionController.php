@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuestionRequest;
 use App\Services\QuestionService;
 use App\Models\Question;
+use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
@@ -39,9 +40,9 @@ class QuestionController extends Controller
      * @param [int] $id
      * @return Question
      */
-    public function getQuestionDetail($id)
+    public function getQuestionDetail(Request $request)
     {
-        return $this->question_service->getQuestionDetail($id);
+        return $this->question_service->getQuestionDetail($request->question_id);
     }
 
     /**

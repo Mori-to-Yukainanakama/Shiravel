@@ -6,12 +6,12 @@ use App\Models\Question;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
 
 class BestAnswerCreateTest extends TestCase
 {
-
+    // ベストアンサー登録パス
     private const BESTANSWER_CREATE_PATH = 'api/v1/bestAnswer/';
-
 
     /**
      * ベストアンサー登録レスポンスチェック

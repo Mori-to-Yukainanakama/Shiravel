@@ -2,11 +2,13 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class QuestionCreateTest extends TestCase
 {
 
+    // 質問登録パス
     private const QUESTION_CREATE_PATH = 'api/v1/questions/create';
 
     /**

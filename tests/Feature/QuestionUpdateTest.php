@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class QuestionUpdateTest extends TestCase
 {
 
+    // 質問更新パス
     private const QUESTION_UPDATE_PATH = 'api/v1/questions/update';
 
     /**
