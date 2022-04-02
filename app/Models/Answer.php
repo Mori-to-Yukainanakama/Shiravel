@@ -12,7 +12,6 @@ class Answer extends Model
     protected $primaryKey = 'answer_id';
 
     protected $fillable = [
-        'answer_id',
         'user_id',
         'question_id',
         'content',
