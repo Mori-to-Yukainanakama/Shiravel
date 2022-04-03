@@ -2,11 +2,9 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class AnswerApiTest extends TestCase
+class AnswerTest extends TestCase
 {
     /**
      * 回答登録apipath
