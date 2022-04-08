@@ -116,7 +116,7 @@ class QuestionController extends Controller
     {
         // user_idはAUTHから取得するようにする
         $data = [
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'title' => $request->title,
             'content' => $request->content,
         ];
