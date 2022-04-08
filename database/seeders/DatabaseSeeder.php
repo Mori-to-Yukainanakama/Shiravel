@@ -13,7 +13,6 @@ use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
 
-
     // ベストアンサーに登録する回答id保存用フィールド
     private $answerId;
 

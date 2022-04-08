@@ -28,4 +28,13 @@ class QuestionComment extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    /**
+     * 登録日の日付フォーマットを変更するアクセサ
+     */
+    public function getCreatedAtAttribute()
+    {
+        $date = date('Y/m/d', strtotime($this->attributes['created_at']));
+        return $this->attributes['created_at'] = $date;
+    }
 }
