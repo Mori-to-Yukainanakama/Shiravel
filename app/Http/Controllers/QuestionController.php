@@ -6,6 +6,7 @@ use App\Http\Requests\QuestionRequest;
 use App\Services\QuestionService;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -115,7 +116,7 @@ class QuestionController extends Controller
     {
         // user_idはAUTHから取得するようにする
         $data = [
-            'user_id' => $request->user_id,
+            'user_id' => 1,
             'title' => $request->title,
             'content' => $request->content,
         ];

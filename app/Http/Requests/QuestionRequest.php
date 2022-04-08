@@ -34,9 +34,6 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            // 必須、数字かどうか
-            'user_id' => 'required|numeric',
-
             // 必須、文字数30
             'title' => 'required|max:30',
 
