@@ -2,14 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class QuestionFactory extends Factory
+class AnswerFactory extends Factory
 {
-
-    protected $question = Question::class;
-
     /**
      * Define the model's default state.
      *
@@ -19,7 +15,6 @@ class QuestionFactory extends Factory
     {
         return [
             'user_id' => rand(1, 10),
-            'title' => $this->faker->realText(20),
             'content' => $this->faker->realText(50),
             'created_at' => $this->faker->dateTimeBetween($startDate = 'now', $endDate = '+2 week'),
         ];

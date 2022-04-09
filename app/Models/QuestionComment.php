@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class QuestionComment extends Model
 {
     use HasFactory;
-
+    // プライマリーキーの指定
     protected $primaryKey = 'question_comment_id';
 
     protected $fillable = [
@@ -21,14 +21,13 @@ class QuestionComment extends Model
     public function question()
     {
         // 相手のモデルを指定 belongsToメソッドは、主テーブル(Question)とは逆の従テーブルからのレコード取得使用する
-        return $this->belongsTo('App\Models\Question', 'question_id');
+        return $this->belongsTo('App\Models\Question', 'questino_id');
     }
 
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
-
 
     /**
      * 登録日の日付フォーマットを変更するアクセサ
