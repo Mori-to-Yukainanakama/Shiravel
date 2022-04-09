@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
 
 class AnswerTest extends TestCase
 {
@@ -172,7 +173,7 @@ class AnswerTest extends TestCase
     }
 
     /**
-     * 質問登録
+     * 回答登録
      * content全角1文字成功パターン
      *
      * @test
@@ -189,16 +190,16 @@ class AnswerTest extends TestCase
     }
 
     /**
-     * 質問登録
+     * 回答登録
      * content文字数制限エラーパターン
      *
      * @test
      * @return void
      */
-    public function answerContentHalfSizeCharacterLimit16384ErrorTest()
+    public function answerContentHalfSizeCharacterLimit256ErrorTest()
     {
         $testStr = "";
-        for ($i = 0; $i < 16385; $i++) {
+        for ($i = 0; $i < 256; $i++) {
             $testStr .= "a";
         }
 
@@ -211,22 +212,22 @@ class AnswerTest extends TestCase
     }
 
     /**
-     * 質問登録
+     * 回答登録
      * content文字数制限成功パターン
      *
      * @test
      * @return void
      */
-    public function answerContentHalfSizeCharacterLimit16384Test()
+    public function answerContentHalfSizeCharacterLimit255Test()
     {
         $testStr = "";
-        for ($i = 0; $i < 16384; $i++) {
+        for ($i = 0; $i < 255; $i++) {
             $testStr .= "a";
         }
 
         $testData = [
             'user_id' => 1,
-            'title' => 'testtesttesttesttes',
+            'question_id' => 1,
             'content' => $testStr,
         ];
         $this->answerCreateResponse200Check($testData);
