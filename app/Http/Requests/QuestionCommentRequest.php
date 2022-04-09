@@ -38,7 +38,7 @@ class QuestionCommentRequest extends FormRequest
             // 数字かどうか
             'user_id' => 'required|numeric',
             'question_id' => 'required|numeric',
-            'content' => 'required|max:255',
+            'content' => 'required|max:16384',
         ];
     }
 
@@ -48,7 +48,7 @@ class QuestionCommentRequest extends FormRequest
             // 回答内容がない時のエラーメッセージ
             'content.required' => '回答内容は必ず入力してください',
 
-            'content.max' => '回答内容が長すぎます。255文字以内で投稿してください',
+            'content.max' => '回答内容が長すぎます。16384文字以内で投稿してください',
         ];
     }
 
