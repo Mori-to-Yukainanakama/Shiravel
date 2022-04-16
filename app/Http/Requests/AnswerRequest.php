@@ -47,7 +47,7 @@ class AnswerRequest extends FormRequest
         return [
             // 回答内容がない時のエラーメッセージ
             'content.required' => '回答内容は必ず入力してください',
-
+            // 回答内容が長い時のエラーメッセージ
             'content.max' => '回答内容が長すぎます。255文字以内で投稿してください',
         ];
     }
