@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 // 認証系
 Route::post('/login', [Controllers\LoginController::class, 'login']);
-Route::post('/logout', [Controllers\LoginController::class, 'logout']);
+Route::get('/logout', [Controllers\LoginController::class, 'logout']);
 Route::post('/register', [Controllers\RegisterController::class, 'register']);

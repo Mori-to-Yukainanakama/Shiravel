@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\AnswerCommentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerCommentController extends Controller
 {
@@ -21,7 +22,7 @@ class AnswerCommentController extends Controller
     return $answer_comments;
   }
 
-  // 質問1件取得
+  // 回答コメント1件取得
   public function getAnswerComment()
   {
     $id = 1;
@@ -33,7 +34,7 @@ class AnswerCommentController extends Controller
   public function create(Request $request)
   {
     $data = [
-      'user_id' => $request->user_id,
+      'user_id' => Auth::id(),
       'answer_id' => $request->answer_id,
       'content' => $request->content,
     ];
