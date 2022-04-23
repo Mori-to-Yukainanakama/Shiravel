@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\AnswerService;
 use Illuminate\Http\Request;
 use App\Models\Answer;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -26,7 +27,7 @@ class AnswerController extends Controller
     public function createAnswer(Request $request)
     {
         $data = [
-            'user_id' => $request->user_id,
+            'user_id' => Auth::id(),
             'question_id' => $request->question_id,
             'content' => $request->content,
         ];
