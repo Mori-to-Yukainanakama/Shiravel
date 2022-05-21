@@ -20,8 +20,10 @@ use App\Http\Controllers\AnswerController;
 |
 */
 
+
 // APIバージョン１
 Route::group(['prefix' => 'v1'], function () {
+
     // /questions パスを共通化
     Route::group(['prefix' => 'questions'], function () {
         // 質問全件取得api
@@ -39,6 +41,14 @@ Route::group(['prefix' => 'v1'], function () {
 
     // /users パスを共通化
     Route::group(['prefix' => 'users'], function () {
+
+        // ユーザー情報取得 ログインしてないユーザーはエラーが返却される
+        Route::middleware('auth:sanctum')->group(function () {
+            Route::get('/getUser', function () {
+                return response()->json(['user' => Auth::user()]);
+            });
+        });
+
         Route::get('/', [UserController::class, 'getUsers']);
         Route::get('/unsolved', [QuestionController::class, 'getUnsolvedQuestions']);
     });

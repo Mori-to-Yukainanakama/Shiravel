@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\QuestionCommentService;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionCommentController extends Controller
 {
@@ -48,7 +49,7 @@ class QuestionCommentController extends Controller
     public function create(Request $request)
     {
         $data = [
-            'user_id' => $request->user_id,
+            'user_id' => Auth::id(),
             'question_id' => $request->question_id,
             'content' => $request->content,
         ];
